@@ -78,7 +78,6 @@ public class HomeTask01 {
         float pi1 = 3.14f;
         double pi2 = 3.141592653589793;
         char c1 = 'A';
-        boolean bool = true;
 
         String strHello = "Hello, World!";
 
@@ -86,8 +85,7 @@ public class HomeTask01 {
         System.out.println("byte b1 = " + b1 + ";\n" + "short s1 = " + s1 + ";");
         System.out.println("int i1 = " + i1 + ";\n" + "long l1 = " + l1 + ";\n");
         System.out.println("float pi1 = " + pi1 + ";\n" + "double pi2 = " + pi2 + ";\n");
-        System.out.println("char c1 = \'" + c1 + "\';\n" + "boolean bool = " + bool + ";\n");
-        System.out.println("String str1 = \"" + strHello + "\";\n");
+        System.out.println("char c1 = \'" + c1 + "\';\n" +  "String str1 = \"" + strHello + "\";\n");
 
         // Задание 3
         System.out.println("Задание 3.\n");

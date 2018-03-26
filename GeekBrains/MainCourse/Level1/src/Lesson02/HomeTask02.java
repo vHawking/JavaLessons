@@ -3,7 +3,7 @@ package Lesson02;
 import java.util.Arrays;
 
 /**
- * Java. Уровень1. Домашнее задание по 2 лекци.
+ * Java. Уровень1. Домашнее задание по 2 лекции.
  *
  * @author Вадим Ястребов.
  * @version 1 Февраля 2018 г.
@@ -18,32 +18,10 @@ public class HomeTask02 {
 
 //  Вариант 1.
 
-    private static void invertArrayVar1() {
-        int[] arr = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
-
-        System.out.println("Заданный массив:\t\t" + Arrays.toString(arr));
-
+    private static void invertArrayVar1(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = (arr[i] == 1) ? --arr[i] : ++arr[i];
+            arr[i] = (arr[i] == 1) ? 0 : 1;
         }
-        System.out.println("Инвертированный массив:\t" + Arrays.toString(arr) + "\n");
-    }
-
-//  Вариант 2.
-
-    private static void invertArrayVar2() {
-        int[] arr = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
-
-        System.out.println("Заданный массив:\t\t" + Arrays.toString(arr));
-
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == 1) {
-                arr[i]--;
-            } else {
-                arr[i]++;
-            }
-        }
-        System.out.println("Инвертированный массив:\t" + Arrays.toString(arr) + "\n");
     }
 
 /*
@@ -313,10 +291,10 @@ public class HomeTask02 {
     public static void main(String[] args) {
 
         System.out.println("Задание 1: Вариант 1 – С помощью тернарного оператора.\n");
-        invertArrayVar1();
-
-        System.out.println("Задание 1: Вариант 2 – С помощью оператора if-else.\n");
-        invertArrayVar2();
+        int[] arr = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
+        System.out.println("Заданный массив:\t\t" + Arrays.toString(arr));
+        invertArrayVar1(arr);
+        System.out.println("Инвертированный массив:\t" + Arrays.toString(arr) + "\n");
 
         System.out.println("Задание 2: Вариант 1.\n");
         fillArrayVar1();
