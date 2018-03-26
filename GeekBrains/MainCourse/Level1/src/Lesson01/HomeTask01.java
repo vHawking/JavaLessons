@@ -37,13 +37,23 @@ public class HomeTask01 {
         // Задание 3
         System.out.println("Задание 3.\n");
 
-        int result = calculate(10, 25,40,4);
-        System.out.println("Результат вычисления выражения: a * (b + (c / d)) = " + result + ".\n");
+        int a = 10;
+        int b = 25;
+        int c = 40;
+        int d = 4;
+        System.out.println("Значения инициализированных переменных:");
+        System.out.println("a = " + a + ";" + "\tb = " + b + ";" + "\tc = " + c + ";" + "\td = " + d + ";");
+        System.out.println("Результат вычисления выражения: a * (b + (c / d)) = " + calculate(a, b, c, d) + ".\n");
 
         // Задание 4
         System.out.println("Задание 4.\n");
 
-        between10and20(5,13);
+        int x = 5;
+        int y = 13;
+        System.out.println("Значения инициализированных переменных:");
+        System.out.println("x = " + x + "; " + "y = " + y + ";");
+        System.out.printf("Сумма заданных значений равна %d. ", x + y);
+        System.out.printf("Метод возвращает значение %s.\n\n", between10and20(x, y) ? "true" : "false");
 
         // Задание 5
         System.out.println("Задание 5.\n");
@@ -71,12 +81,8 @@ public class HomeTask01 {
                 "Если остаток от деления есть, то год является невисокосным. Например, 2300 год хоть и\n" +
                 "делится на 4 без остатка, но при делении на 400 получается остаток. Значит год невисокосный.\n");
 
-        int x = 2016;
-        System.out.printf("Задан %d год. Он %s является високосным.\n", x, (isLeapYearBool(x)) ? "\b" : "не");
-//        isLeapYear(1996);
-//        System.out.println();
-//        isLeapYear(2300);
-
+        int x1 = 2016;
+        System.out.printf("Задан %d год. Он %s является високосным.\n", x, (isLeapYearBool(x1)) ? "\b" : "не");
     }
 
 /*
@@ -85,8 +91,6 @@ public class HomeTask01 {
 */
 
     private static int calculate(int a, int b, int c, int d) {
-        System.out.println("Значения инициализированных переменных:");
-        System.out.println("int a = " + a + ";" + "\tint b = " + b + ";" + "\tint c = " + c + ";" + "\tint d = " + d + ";");
         return a * (b + (c / d));
     }
 
@@ -95,19 +99,9 @@ public class HomeTask01 {
     от 10 до 20 (включительно), если да – вернуть true, в противном случае – false;
 */
 
-    private static void between10and20(int x, int y) {
-        System.out.println("Значения инициализированных переменных:");
-        System.out.println("int x = " + x + ";" + "\tint y = " + y + ";");
-
+    private static boolean between10and20(int x, int y) {
         int sum = x + y;
-
-        System.out.print("Сумма заданных чисел равна " + sum);
-
-        if (sum >= 10 && sum <= 20) {
-            System.out.println(", метод возвращает значение true;\n");
-        } else {
-            System.out.println(", метод возвращает значение false;\n");
-        }
+        return sum >= 10 && sum <= 20;
     }
 
 /*
@@ -149,17 +143,6 @@ public class HomeTask01 {
     8. Написать метод, который определяет является ли год високосным, и выводит сообщение в консоль.
     Каждый 4-й год является високосным, кроме каждого 100-го, при этом каждый 400-й – високосный.
 */
-
-//    private static void isLeapYear(int x) {
-//        System.out.println("Задан " + x + " год.");
-//
-//        if (x % 4 == 0 && x % 100 != 0 || x % 400 == 0) {
-//            System.out.println("Год является високосным.");
-//        } else {
-//            System.out.println("Год не является високосным.");
-//        }
-//    }
-
     private static boolean isLeapYearBool(int x) {
         return x % 4 == 0 && x % 100 != 0 || x % 400 == 0;
     }
