@@ -97,23 +97,23 @@ public class HomeTask04 {
         for (int v = 0; v < SIZE_Y; v++) {
             for (int h = 0; h < SIZE_X; h++) {
                 //анализ наличия поля для проверки
-                if (h + SIZE_WIN <= SIZE_X) {                           //по горизонтале
+                if (h + SIZE_WIN <= SIZE_X) {                           //по горизонтали
                     if (checkLineHorizon(v, h, PLAYER_DOT) == SIZE_WIN - 1) {
                         if (MoveAiLineHorizon(v, h, AI_DOT)) return;
                     }
 
-                    if (v - SIZE_WIN > -2) {                            //вверх по диагонале
+                    if (v - SIZE_WIN > -2) {                            //вверх по диагонали
                         if (checkDiaUp(v, h, PLAYER_DOT) == SIZE_WIN - 1) {
                             if (MoveAiDiaUp(v, h, AI_DOT)) return;
                         }
                     }
-                    if (v + SIZE_WIN <= SIZE_Y) {                       //вниз по диагонале
+                    if (v + SIZE_WIN <= SIZE_Y) {                       //вниз по диагонали
                         if (checkDiaDown(v, h, PLAYER_DOT) == SIZE_WIN - 1) {
                             if (MoveAiDiaDown(v, h, AI_DOT)) return;
                         }
                     }
                 }
-                if (v + SIZE_WIN <= SIZE_Y) {                       //по вертикале
+                if (v + SIZE_WIN <= SIZE_Y) {                       //по вертикали
                     if (checkLineVertical(v, h, PLAYER_DOT) == SIZE_WIN - 1) {
                         if (MoveAiLineVertical(v, h, AI_DOT)) return;
                     }
@@ -126,24 +126,24 @@ public class HomeTask04 {
         for (int v = 0; v < SIZE_Y; v++) {
             for (int h = 0; h < SIZE_X; h++) {
                 //анализ наличия поля для проверки
-                if (h + SIZE_WIN <= SIZE_X) {                           //по горизонтале
+                if (h + SIZE_WIN <= SIZE_X) {                           //по горизонтали
                     if (checkLineHorizon(v, h, AI_DOT) == SIZE_WIN - 1) {
                         if (MoveAiLineHorizon(v, h, AI_DOT)) return;
                     }
 
-                    if (v - SIZE_WIN > -2) {                            //вверх по диагонале
+                    if (v - SIZE_WIN > -2) {                            //вверх по диагонали
                         if (checkDiaUp(v, h, AI_DOT) == SIZE_WIN - 1) {
                             if (MoveAiDiaUp(v, h, AI_DOT)) return;
                         }
                     }
-                    if (v + SIZE_WIN <= SIZE_Y) {                       //вниз по диагонале
+                    if (v + SIZE_WIN <= SIZE_Y) {                       //вниз по диагонали
                         if (checkDiaDown(v, h, AI_DOT) == SIZE_WIN - 1) {
                             if (MoveAiDiaDown(v, h, AI_DOT)) return;
                         }
                     }
 
                 }
-                if (v + SIZE_WIN <= SIZE_Y) {                       //по вертикале
+                if (v + SIZE_WIN <= SIZE_Y) {                       //по вертикали
                     if (checkLineVertical(v, h, AI_DOT) == SIZE_WIN - 1) {
                         if (MoveAiLineVertical(v, h, AI_DOT)) return;
                     }
@@ -184,7 +184,7 @@ public class HomeTask04 {
         return false;
     }
 
-    //проверка заполнения всей линии по диагонале вверх
+    //проверка заполнения всей линий по диагонали вверх
 
     private static boolean MoveAiDiaUp(int v, int h, char symbol) {
         for (int i = 0, j = 0; j < SIZE_WIN; i--, j++) {
@@ -196,7 +196,7 @@ public class HomeTask04 {
         return false;
     }
 
-    //проверка заполнения всей линии по диагонале вниз
+    //проверка заполнения всей линии по диагонали вниз
 
     private static boolean MoveAiDiaDown(int v, int h, char symbol) {
 
