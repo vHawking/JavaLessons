@@ -96,7 +96,7 @@ public class HomeTask04 {
 
         for (int v = 0; v < SIZE_Y; v++) {
             for (int h = 0; h < SIZE_X; h++) {
-                //анализ наличие поля для проверки
+                //анализ наличия поля для проверки
                 if (h + SIZE_WIN <= SIZE_X) {                           //по горизонтале
                     if (checkLineHorizon(v, h, PLAYER_DOT) == SIZE_WIN - 1) {
                         if (MoveAiLineHorizon(v, h, AI_DOT)) return;
@@ -125,7 +125,7 @@ public class HomeTask04 {
 
         for (int v = 0; v < SIZE_Y; v++) {
             for (int h = 0; h < SIZE_X; h++) {
-                //анализ наличие поля для проверки
+                //анализ наличия поля для проверки
                 if (h + SIZE_WIN <= SIZE_X) {                           //по горизонтале
                     if (checkLineHorizon(v, h, AI_DOT) == SIZE_WIN - 1) {
                         if (MoveAiLineHorizon(v, h, AI_DOT)) return;
