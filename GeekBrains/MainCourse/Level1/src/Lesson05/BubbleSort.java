@@ -27,12 +27,36 @@ public class BubbleSort {
                     arr[i] = arr[i + 1];
                     arr[i + 1] = buf;
                 }
+                counter++;
             }
         }
+        return counter;
     }
 
-    static void bubbleSortWhile(int[] arr) {
+    private static int bubbleSortOptimized(int[] arr) {
+        int i;
+        int j;
+        int counter = 0;
+        for (i = 0; i < arr.length; i++) {
+            boolean flag = true;
+            for (j = 0; j < arr.length - 1; j++) {
+                if (arr[i] > arr[i + 1]) {
+                    flag = false;
+                    int buf = arr[i];
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = buf;
+                }
+                counter++;
+            }
+            if (flag) {
+                break;
+            }
+        }
+        return counter;
+    }
 
+    static int bubbleSortWhile(int[] arr) {
+        int counter = 0;
         boolean arrSorted = false;
 
         while (!arrSorted) {
@@ -45,15 +69,15 @@ public class BubbleSort {
                     arr[i] = arr[i + 1];
                     arr[i + 1] = buf;
                 }
+                counter++;
             }
-
         }
-        //System.out.println("\nСортировка методом пузырька при помощи цикла while:\n" + Arrays.toString(arr));
+        return counter;
     }
 
     public static void main(String[] args) {
         int len = 10;
-        int count = 0;
+        int count;
         int[] arr0 = new int[len];
         int[] arr1 = new int[len];
         int[] arr2 = new int[len];
@@ -65,7 +89,12 @@ public class BubbleSort {
         copyArray(arr0, arr3, len);
 
         System.out.println("\nМассив до сортировки:\n" + Arrays.toString(arr0));
-        bubbleSort2for(arr1);
+        count = bubbleSort2for(arr1);
         System.out.println("\nСортировка методом пузырька при помощи 2х циклов for:\n" + Arrays.toString(arr1));
+        System.out.println("Количество циклов: " + count);
+
+        count = bubbleSortWhile(arr2);
+        System.out.println("\nОптимизированная пузырьковая сортировка:\n" + Arrays.toString(arr2));
+        System.out.println("Количество циклов: " + count);
     }
 }
