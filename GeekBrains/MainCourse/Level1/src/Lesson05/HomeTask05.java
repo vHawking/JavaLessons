@@ -1,14 +1,9 @@
 package Lesson05;
 
-import java.util.Arrays;
-import java.util.Date;
-import java.util.Random;
-
 import static Lesson05.Staff.ifAgeOver40;
-import static Lesson05.bubbleSort.*;
 
 /**
- * Java. Уровень1. Домашнее задание по 5 лекци.
+ * Java. Уровень1. Домашнее задание по 5 лекции.
  *
  * @author Вадим Ястребов.
  * @version 11 Февраля 2018 г.
@@ -44,13 +39,6 @@ public class HomeTask05 {
 
         System.out.println();
         ifAgeOver40(person);
-
-        bubbleInit();
-        bubbleSort2for();
-
-        bubbleInit();
-        bubbleSortWhile();
-
     }
 }
 
@@ -86,51 +74,5 @@ class Staff {
     private String personResult() {
         return "Фамилия имя: " + name + "; должность: " + position + "; e-mail: " + email + "; телефон: " + phone +
                 "; оклад: " + salary + " руб.; возраст: " + age + ".";
-    }
-}
-
-class bubbleSort {
-    private static int[] arr = new int[10];
-    private static Random rand = new Random();
-
-    static void bubbleInit() {
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = rand.nextInt(100);
-        }
-        System.out.println("\nЗаданный массив случайных чисел:\n" + Arrays.toString(arr));
-    }
-
-    static void bubbleSort2for() {
-
-        for (int x = 0; x < arr.length; x++) {
-            for (int i = 0; i < arr.length - 1; i++) {
-                if (arr[i] > arr[i + 1]) {
-                    int buf = arr[i];
-                    arr[i] = arr[i + 1];
-                    arr[i + 1] = buf;
-                }
-            }
-        }
-        System.out.println("\nСортировка методом пузырька при помощи 2х циклов for:\n" + Arrays.toString(arr));
-    }
-
-    static void bubbleSortWhile() {
-
-        boolean arrSorted = false;
-
-        while (!arrSorted) {
-            arrSorted = true;
-            for (int i = 0; i < arr.length - 1; i++) {
-                if (arr[i] > arr[i + 1]) {
-                    arrSorted = false;
-
-                    int buf = arr[i];
-                    arr[i] = arr[i + 1];
-                    arr[i + 1] = buf;
-                }
-            }
-
-        }
-        System.out.println("\nСортировка методом пузырька при помощи цикла while:\n" + Arrays.toString(arr));
     }
 }
