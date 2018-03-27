@@ -3,7 +3,7 @@ package Lesson05;
 import static Lesson05.Staff.ifAgeOver40;
 
 /**
- * Java. Уровень1. Домашнее задание по 5 лекци.
+ * Java. Уровень1. Домашнее задание по 5 лекции.
  *
  * @author Вадим Ястребов.
  * @version 11 Февраля 2018 г.

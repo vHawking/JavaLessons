@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class BubbleSort {
+
+    // Метод копирует сгенерированный массив, чтобы разными алгоримами сортировки можно было пройтись по одинаковому
+
     private static void copyArray(int[] arrFrom, int[] arrTo, int len) {
         int i;
         for (i = 0; i < len; i++) {
@@ -11,21 +14,28 @@ public class BubbleSort {
         }
     }
 
+    // Заполняем массив случайными элементами
+
     private static void fillArray(int[] arr) {
         Random rand = new Random();
-        for (int i = 0; i < arr.length; i++) {
+        int i;
+        for (i = 0; i < arr.length; i++) {
             arr[i] = rand.nextInt(100);
         }
     }
 
-    private static int bubbleSort2for(int[] arr) {
+    // Классическая пузырьковая сортировка
+
+    private static int bubbleSort(int[] arr) {
+        int i;
+        int j;
         int counter = 0;
-        for (int x = 0; x < arr.length; x++) {
-            for (int i = 0; i < arr.length - 1; i++) {
-                if (arr[i] > arr[i + 1]) {
-                    int buf = arr[i];
-                    arr[i] = arr[i + 1];
-                    arr[i + 1] = buf;
+        for (i = 0; i < arr.length; i++) {
+            for (j = 0; j < arr.length - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int buf = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = buf;
                 }
                 counter++;
             }
@@ -33,18 +43,20 @@ public class BubbleSort {
         return counter;
     }
 
+    // Оптимизированная пузырьковая сортировка
+
     private static int bubbleSortOptimized(int[] arr) {
         int i;
         int j;
         int counter = 0;
         for (i = 0; i < arr.length; i++) {
             boolean flag = true;
-            for (j = 0; j < arr.length - 1; j++) {
-                if (arr[i] > arr[i + 1]) {
+            for (j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
                     flag = false;
-                    int buf = arr[i];
-                    arr[i] = arr[i + 1];
-                    arr[i + 1] = buf;
+                    int buf = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = buf;
                 }
                 counter++;
             }
@@ -55,7 +67,9 @@ public class BubbleSort {
         return counter;
     }
 
-    static int bubbleSortWhile(int[] arr) {
+    // Пузырьковая сортировка с помощью цикла while
+
+    private static int bubbleSortWhile(int[] arr) {
         int counter = 0;
         boolean arrSorted = false;
 
@@ -76,7 +90,7 @@ public class BubbleSort {
     }
 
     public static void main(String[] args) {
-        int len = 10;
+        int len = 15;
         int count;
         int[] arr0 = new int[len];
         int[] arr1 = new int[len];
@@ -89,12 +103,16 @@ public class BubbleSort {
         copyArray(arr0, arr3, len);
 
         System.out.println("\nМассив до сортировки:\n" + Arrays.toString(arr0));
-        count = bubbleSort2for(arr1);
-        System.out.println("\nСортировка методом пузырька при помощи 2х циклов for:\n" + Arrays.toString(arr1));
+        count = bubbleSort(arr1);
+        System.out.println("\nСортировка методом пузырька при помощи циклов for-for:\n" + Arrays.toString(arr1));
         System.out.println("Количество циклов: " + count);
 
-        count = bubbleSortWhile(arr2);
-        System.out.println("\nОптимизированная пузырьковая сортировка:\n" + Arrays.toString(arr2));
+        count = bubbleSortOptimized(arr2);
+        System.out.println("\nОптимизированная пузырьковая сортировка циклами for-for:\n" + Arrays.toString(arr2));
+        System.out.println("Количество циклов: " + count);
+
+        count = bubbleSortWhile(arr3);
+        System.out.println("\nОптимизированная пузырьковая сортировка циклом while:\n" + Arrays.toString(arr3));
         System.out.println("Количество циклов: " + count);
     }
 }
