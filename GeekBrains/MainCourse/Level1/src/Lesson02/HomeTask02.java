@@ -30,51 +30,31 @@ public class HomeTask02 {
 
 //  Вариант 1.
 
-    private static void fillArrayVar1() {
-        int[] arr = new int[8];
-
+    private static void fillArrayVar1(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             arr[i] = i * 3;
         }
-        System.out.println("Заполненный массив:\t" + Arrays.toString(arr) + "\n");
     }
 
-//  Вариант 2.
 
-    private static void fillArrayVar2() {
-        int[] arr = new int[8];
-        arr[0] = 0;
+//  Вариант 2
 
-        for (int i = 1; i < arr.length; i++) {
-            arr[i] = i * 3;
-        }
-        System.out.println("Заполненный массив:\t" + Arrays.toString(arr) + "\n");
-    }
-
-//  Вариант 3
-
-    private static void fillArrayVar3() {
-        int[] arr = new int[8];
-
+    private static void fillArrayVar2(int[] arr ) {
         for (int i = 0, j = arr.length; i < arr.length; i++, j--) {
             arr[j - 1] = (j - 1) * 3;
         }
-        System.out.println("Заполненный массив:\t" + Arrays.toString(arr) + "\n");
     }
 
 /*
     3. Задать массив [1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1], пройти по нему циклом и числа меньшие 6 умножить на 2;
 */
 
-    private static void changeArray() {
-        int[] arr = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
-
+    private static void changeArray(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] < 6) {
                 arr[i] *= 2;
             }
         }
-        System.out.println("Вывод массива с новыми значениями:\t" + Arrays.toString(arr) + "\n");
     }
 
 /*
@@ -111,10 +91,10 @@ public class HomeTask02 {
             arr[str][str] = 1;
         }
 
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(Arrays.toString(arr[i]));
-            }
-            System.out.println();
+        for (int[] i : arr) {
+            System.out.println(Arrays.toString(i));
+        }
+        System.out.println();
     }
 
 //  Вариант 3.
@@ -126,8 +106,8 @@ public class HomeTask02 {
             arr[i][z - i - 1] = 1;
         }
 
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(Arrays.toString(arr[i]));
+        for (int[] i : arr) {
+            System.out.println(Arrays.toString(i));
         }
         System.out.println();
     }
@@ -136,21 +116,27 @@ public class HomeTask02 {
     5**. Задать одномерный массив и найти в нем минимальный и максимальный элементы;
 */
 
-    private static void maxMinArray() {
-        int[] arr = {50, 7, 76, 92, 22, 72, 31, 67, 70, 20};
-        int min = arr[0], max = arr[0];
+    private static int findMax(int[] arr) {
+        int max = arr[0];
 
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > max) {
-                max = arr[i];
-            } else if (arr[i] < min) {
-                min = arr[i];
+        for (int i : arr) {
+            if (i > max) {
+                max = i;
             }
         }
-        System.out.println("Задан массив: " + Arrays.toString(arr));
-        System.out.println("Наибольшее значение: " + max + ";" + "\tНаименьшее значение: " + min + ";\n");
+        return max;
     }
 
+    private static int findMin(int[] arr) {
+        int min = arr[0];
+
+        for (int i : arr) {
+            if (i < min) {
+                min = i;
+            }
+        }
+        return min;
+    }
 /*
     6**. Написать метод, в который передается не пустой одномерный целочисленный массив, метод должен вернуть true,
     если в массиве есть место, в котором сумма левой и правой части массива равны.
@@ -201,8 +187,8 @@ public class HomeTask02 {
         int sumLeft = 0;
 
         // Простым циклом for пробегаемся по массиву и находим сумму всех его элементов;
-        for (int i = 0; i < arr.length ; i++) {
-            sumMass += arr[i];
+        for (int i : arr) {
+            sumMass += i;
         }
         // Создаём ещё один простой цикл for и пробегаемся по массиву для его левой части. Здесь i < arr.length - 1
         // применяется для уменьшения количества итераций, так как для точки баланса справа должно отаться хотя бы одно
@@ -297,16 +283,19 @@ public class HomeTask02 {
         System.out.println("Инвертированный массив:\t" + Arrays.toString(arr) + "\n");
 
         System.out.println("Задание 2: Вариант 1.\n");
-        fillArrayVar1();
+        int[] arr1 = new int[8];
+        fillArrayVar1(arr1);
+        System.out.println("Заполненный массив:\t" + Arrays.toString(arr1) + "\n");
 
         System.out.println("Задание 2: Вариант 2.\n");
-        fillArrayVar2();
-
-        System.out.println("Задание 2: Вариант 3.\n");
-        fillArrayVar3();
+        int[] arr2 = new int[8];
+        fillArrayVar2(arr2);
+        System.out.println("Заполненный массив:\t" + Arrays.toString(arr2) + "\n");
 
         System.out.println("Задание 3.\n");
-        changeArray();
+        int[] arr3 = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
+        changeArray(arr3);
+        System.out.println("Вывод массива с новыми значениями: " + Arrays.toString(arr3) + "\n");
 
         System.out.println("Задание 4: Варинат 1.\n");
         int x = 10;
@@ -321,7 +310,9 @@ public class HomeTask02 {
         fillDiagonal3(z);
 
         System.out.println("Задание 5**.\n");
-        maxMinArray();
+        int[] arr5 = {50, 7, 76, 92, 22, 72, 31, 67, 70, 20};
+        System.out.println("Задан массив: " + Arrays.toString(arr5));
+        System.out.printf("Наибольшее значение: %d. Наименьшее значение: %d.\n\n", findMax(arr5), findMin(arr5));
 
         System.out.println("Задание 6**: Вариант 1.\n");
         int[] arrVar1a = {20, 5, 6, 30, 1};
