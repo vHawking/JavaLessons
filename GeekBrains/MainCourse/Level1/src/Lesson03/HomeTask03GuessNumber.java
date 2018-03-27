@@ -13,7 +13,7 @@ import java.util.Scanner;
  * После победы, или проигрыша, выводится запрос – «Повторить игру еще раз? 1 – да / 0 – нет» (1 – повторить, 0 – нет).
  */
 
-public class MyClass {
+public class HomeTask03GuessNumber {
     private static Scanner scanner = new Scanner(System.in);
 
 /*
