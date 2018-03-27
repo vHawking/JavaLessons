@@ -3,6 +3,13 @@ package Lesson04;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * Java. Уровень1. Домашнее задание по 4 лекции.
+ *
+ * @author Вадим Ястребов.
+ * @version 9 Февраля 2018 г.
+ */
+
 public class HomeTask04 {
 
     // 2. Определяем размер массива
