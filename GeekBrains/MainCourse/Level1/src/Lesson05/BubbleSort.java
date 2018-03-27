@@ -3,9 +3,22 @@ package Lesson05;
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * Java. Уровень1. Дополнительное домашнее задание по 5 лекции.
+ *
+ * @author Вадим Ястребов.
+ * @version 11 Февраля 2018 г.
+ *
+ * Оптимизировать пузырьковую сортировку. Сравнить количество операций сравнения оптимизированной и не оптимизированной
+ * программы. Написать функции сортировки, которые возвращают количество операций.
+ */
+
 public class BubbleSort {
 
-    // Метод копирует сгенерированный массив, чтобы разными алгоримами сортировки можно было пройтись по одинаковому
+    /*
+     * Метод копирует сгенерированный массив, чтобы разными реализациями сортировки можно было пройтись по одинаковой
+     * числовой последовательности для сравнения количества операций.
+     */
 
     private static void copyArray(int[] arrFrom, int[] arrTo, int len) {
         int i;
@@ -14,7 +27,7 @@ public class BubbleSort {
         }
     }
 
-    // Заполняем массив случайными элементами
+    // Заполняем массив случайными элементами.
 
     private static void fillArray(int[] arr) {
         Random rand = new Random();
@@ -24,7 +37,7 @@ public class BubbleSort {
         }
     }
 
-    // Классическая пузырьковая сортировка
+    // Классическая пузырьковая сортировка.
 
     private static int bubbleSort(int[] arr) {
         int i;
@@ -43,7 +56,7 @@ public class BubbleSort {
         return counter;
     }
 
-    // Оптимизированная пузырьковая сортировка
+    // Оптимизированная пузырьковая сортировка.
 
     private static int bubbleSortOptimized(int[] arr) {
         int i;
@@ -67,7 +80,7 @@ public class BubbleSort {
         return counter;
     }
 
-    // Пузырьковая сортировка с помощью цикла while
+    // Пузырьковая сортировка с помощью цикла while.
 
     private static int bubbleSortWhile(int[] arr) {
         int counter = 0;
@@ -105,14 +118,14 @@ public class BubbleSort {
         System.out.println("\nМассив до сортировки:\n" + Arrays.toString(arr0));
         count = bubbleSort(arr1);
         System.out.println("\nСортировка методом пузырька при помощи циклов for-for:\n" + Arrays.toString(arr1));
-        System.out.println("Количество циклов: " + count);
+        System.out.println("Количество операций: " + count);
 
         count = bubbleSortOptimized(arr2);
         System.out.println("\nОптимизированная пузырьковая сортировка циклами for-for:\n" + Arrays.toString(arr2));
-        System.out.println("Количество циклов: " + count);
+        System.out.println("Количество операций: " + count);
 
         count = bubbleSortWhile(arr3);
         System.out.println("\nОптимизированная пузырьковая сортировка циклом while:\n" + Arrays.toString(arr3));
-        System.out.println("Количество циклов: " + count);
+        System.out.println("Количество операций: " + count);
     }
 }
