@@ -1,5 +1,23 @@
 package Lesson07;
 
+/**
+ * Java. Уровень1. Домашнее задание по 7 лекции.
+ *
+ * @author Вадим Ястребов.
+ * @version 18 Февраля 2018 г.
+ *
+ * 1. Расширить задачу про котов и тарелки с едой.
+ * 2. Сделать так, чтобы в тарелке с едой не могло получиться отрицательного количества еды (например, в миске 10 еды,
+ * а кот пытается покушать 15-20).
+ * 3. Каждому коту нужно добавить поле сытость (когда создаем котов, они голодны). Если коту удалось покушать
+ * (хватило еды), сытость = true.
+ * 4. Считаем, что если коту мало еды в тарелке, то он ее просто не трогает, то есть не может быть наполовину сыт
+ * (это сделано для упрощения логики программы).
+ * 5. Создать массив котов и тарелку с едой, попросить всех котов покушать из этой тарелки и потом вывести информацию
+ * о сытости котов в консоль.
+ * 6. Добавить в тарелку метод, с помощью которого можно было бы добавлять еду в тарелку.
+ */
+
 public class HomeTask07 {
 
     public static void main(String[] args) {
@@ -11,7 +29,7 @@ public class HomeTask07 {
         };
 
         System.out.println("Коты хотят покушать и просят насыпать им корм.");
-        Plate p = new Plate(70);
+        Plate p = new Plate(80);
 
         for (Cat cat : cats) {
             p.info();
@@ -20,24 +38,6 @@ public class HomeTask07 {
         }
         p.addFood();
         p.info();
-
-        // Дополнительное задание про строки.
-
-        System.out.println("\n\nЗадание: Привести строку к нормальному виду и расставить точки.");
-
-        String str1 = "   Предложение один    Теперь предложение два     Предложение три     А тут предложение четыре     ";
-        System.out.println("\nБыло:\n" + str1);
-
-        String str2 = str1.trim().replaceAll(" +", " ");
-
-        StringBuilder stringBuilder = new StringBuilder(str2);
-
-        for(int i = str2.length()-1; i >= 1; i--) {
-            if(str2.charAt(i) >= 'A' && str2.charAt(i) <= 'Я') {
-                stringBuilder.insert(i-1, ".");
-            }
-        }
-        System.out.println("\nСтало:\n" + stringBuilder.append('.').toString());
     }
 
     static class Cat {
@@ -53,7 +53,8 @@ public class HomeTask07 {
 
         void info() {
             System.out.printf("\nКот %s имеет аппетит %d%% и подходит к тарелке с едой.\n", name, appetite);
-            System.out.printf("Кот %s %s", name, !satiety ? "хорошо покушал. Муррр...\n" : "не ест из тарелки, где мало еды. Мяу!\n");
+            System.out.printf("Кот %s %s", name, !satiety ?
+                    "хорошо покушал. И благодарит вас.\n" : "не ест из тарелки, где мало еды. Мяу!\n");
         }
 
         void eat(Plate p) {
@@ -80,12 +81,11 @@ public class HomeTask07 {
         }
 
         void info() {
-            System.out.printf("\nТарелка наполнена едой на %d%%.", food);
+            System.out.printf("Тарелка наполнена едой на %d%%.\n", food);
         }
 
         void addFood() {
-            System.out.printf("\nДобавляем еду в тарелку >>> %d%%.\n", 50);
-            this.food += 70;
+            System.out.printf("\nДобавляем еду в тарелку >>> %d%%.\n", this.food += 50);
         }
     }
 }
