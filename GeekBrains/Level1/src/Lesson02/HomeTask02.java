@@ -108,8 +108,8 @@ public class HomeTask02 {
     }
 
 /*
- *  5**. Задать одномерный массив и найти в нем минимальный и максимальный элементы;
- */
+    5**. Задать одномерный массив и найти в нем минимальный и максимальный элементы;
+*/
 
     private static int findMax(int[] arr) {
         int max = arr[0];
@@ -139,7 +139,7 @@ public class HomeTask02 {
     checkBalance ([10, || 10]) → true, граница показана символами ||, эти символы в массив не входят.
 */
 
-//  Вариант 1.
+    //  Вариант 1.
 
     private static boolean checkBalance1(int[] arr) {
         // Вначале выполнения программы левая и правая части массива равны 0;
@@ -173,7 +173,7 @@ public class HomeTask02 {
         return  false;
     }
 
-//  Вариант 2.
+    //  Вариант 2.
 
     private static boolean checkBalance2(int[] arr) {
         // В данном варианте будем сравнивать сумму левой части массива * 2 с его общей суммой для достижения равенства;
@@ -206,7 +206,7 @@ public class HomeTask02 {
     пользоваться вспомогательными массивами.
 */
 
-//  Вариант 1.
+    //  Вариант 1.
 
     private static void arrayShift1(int[] arr, int shift) {
         System.out.println("Массив до сдвига:\t\t" + Arrays.toString(arr));
@@ -230,7 +230,7 @@ public class HomeTask02 {
         System.out.print("Массив после сдвига:\t" + Arrays.toString(arr) + "\n\n");
     }
 
-//  Вариант 2.
+    //  Вариант 2.
 
     private static void arrayShift2(int[] arr, int shift) {
         System.out.println("Массив до сдвига:\t\t" + Arrays.toString(arr));
@@ -318,24 +318,24 @@ public class HomeTask02 {
         System.out.println("Задание 6**: Вариант 1.\n");
         int[] arrVar1a = {20, 5, 6, 30, 1};
         boolean tf1a = checkBalance1(arrVar1a);
-        System.out.printf("В метод передан массив: %s %s", Arrays.toString(arrVar1a), tf1a ? "\nТочка баланса " +
-                "найдена: true;\n\n" : "\nТочка баланса не найдена: false;\n\n");
+        System.out.printf("В метод передан массив: %s\nТочка баланса %s.\n\n", Arrays.toString(arrVar1a), tf1a ?
+                "найдена: true" : "не найдена: false");
 
         int[] arrVar1b = {2, 1, 1, 2, 1};
         boolean tf1b = checkBalance1(arrVar1b);
-        System.out.printf("В метод передан массив: %s %s", Arrays.toString(arrVar1b), tf1b ? "\nТочка баланса " +
-                "найдена: true;\n\n" : "\nТочка баланса не найдена: false;\n\n");
+        System.out.printf("В метод передан массив: %s\nТочка баланса %s.\n\n", Arrays.toString(arrVar1b), tf1b ?
+                "найдена: true" : "не найдена: false");
 
         System.out.println("Задание 6**: Вариант 2.\n");
         int[] arrVar2a = {20, 5, 6, 30, 1};
         boolean tf2a = checkBalance2(arrVar2a);
-        System.out.printf("В метод передан массив: %s %s", Arrays.toString(arrVar2a), tf2a ? "\nТочка баланса " +
-                "найдена: true;\n\n" : "\nТочка баланса не найдена: false;\n\n");
+        System.out.printf("В метод передан массив: %s\nТочка баланса %s.\n\n", Arrays.toString(arrVar2a), tf2a ?
+                "найдена: true" : "не найдена: false");
 
         int[] arrVar2b = {2, 1, 1, 2, 1};
         boolean tf2b = checkBalance2(arrVar2b);
-        System.out.printf("В метод передан массив: %s %s", Arrays.toString(arrVar2b), tf2b ? "\nТочка баланса " +
-                "найдена: true;\n\n" : "\nТочка баланса не найдена: false;\n\n");
+        System.out.printf("В метод передан массив: %s\nТочка баланса %s.\n\n", Arrays.toString(arrVar2b), tf2b ?
+                "найдена: true" : "не найдена: false");
 
         System.out.println("Задание 7****. Вариант 1.\n");
         int[] arrShift1 = {11, 12, 13, 14, 15, 16, 17, 18, 19, 20};

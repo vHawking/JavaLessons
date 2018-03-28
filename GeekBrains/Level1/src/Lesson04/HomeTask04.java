@@ -88,7 +88,7 @@ public class HomeTask04 {
             System.out.println("\nВведите координаты для хода.");
             System.out.printf("По горизонтали от 1 до %d: ", SIZE_Y);
             y = scan.nextInt() - 1;
-            System.out.printf("По горизонтали от 0 до %d: ", SIZE_X - 1);
+            System.out.printf("По вертикали от 0 до %d: ", SIZE_X - 1);
             x = scan.nextInt();
         } while (!isCellValid(y, x));
         setSymbol(y, x, PLAYER_DOT);

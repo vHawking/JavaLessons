@@ -102,7 +102,7 @@ public class BubbleSort {
     }
 
     public static void main(String[] args) {
-        int len = 15;
+        int len = 10;
         int count;
         int[] arr0 = new int[len];
         int[] arr1 = new int[len];

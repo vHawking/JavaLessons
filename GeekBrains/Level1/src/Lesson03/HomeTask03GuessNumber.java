@@ -3,7 +3,7 @@ package Lesson03;
 import java.util.Scanner;
 
 /**
- * Java. Уровень1. Домашнее задание по 3 лекци.
+ * Java. Уровень1. Домашнее задание по 3 лекции.
  *
  * @author Вадим Ястребов.
  * @version 5 Февраля 2018 г.
