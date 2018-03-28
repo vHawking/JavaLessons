@@ -64,9 +64,7 @@ public class HomeTask02 {
 
 //  Вариант 1.
 
-    private static void fillDiagonal1(int x) {
-        int[][] arr = new int[x][x];
-
+    private static void fillDiagonal1(int[][] arr) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0, z = arr.length - 1; j < arr.length; j++, z--) {
                 if (i == j || i == z) {
@@ -75,46 +73,43 @@ public class HomeTask02 {
                     arr[i][j] = 0;
                 }
             }
-            System.out.println(Arrays.toString(arr[i]));
         }
-        System.out.println();
     }
 
 //  Вариант 2.
 
-    private static void fillDiagonal2(int y) {
-        int[][] arr = new int[y][y];
+    private static void fillDiagonal2(int[][] arr) {
         int str, bkw;
-
         for (str = 0, bkw = arr.length - 1; str < arr.length; str++, bkw--) {
             arr[str][bkw] = 1;
             arr[str][str] = 1;
         }
-
-        for (int[] i : arr) {
-            System.out.println(Arrays.toString(i));
-        }
-        System.out.println();
     }
 
 //  Вариант 3.
 
-    private static void fillDiagonal3(int z) {
-        int[][] arr = new int[z][z];
-        for (int i = 1; i < arr.length; i++) {
+    private static void fillDiagonal3(int[][] arr, int z) {
+        for (int i = 0; i < arr.length; i++) {
             arr[i][i] = 1;
             arr[i][z - i - 1] = 1;
         }
+    }
 
-        for (int[] i : arr) {
-            System.out.println(Arrays.toString(i));
+    private static void printDiagonal(int[][] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print("[");
+            for (int j = 0; j < arr.length; j++) {
+                System.out.print(arr[i][j] + "  ");
+            }
+            System.out.print("\b\b]");
+            System.out.println();
         }
         System.out.println();
     }
 
 /*
-    5**. Задать одномерный массив и найти в нем минимальный и максимальный элементы;
-*/
+ *  5**. Задать одномерный массив и найти в нем минимальный и максимальный элементы;
+ */
 
     private static int findMax(int[] arr) {
         int max = arr[0];
@@ -299,15 +294,21 @@ public class HomeTask02 {
 
         System.out.println("Задание 4: Варинат 1.\n");
         int x = 10;
-        fillDiagonal1(x);
+        int[][] array1 = new int[x][x];
+        fillDiagonal1(array1);
+        printDiagonal(array1);
 
         System.out.println("Задание 4: Варинат 2.\n");
         int y = 10;
-        fillDiagonal2(y);
+        int[][] array2 = new int[y][y];
+        fillDiagonal2(array2);
+        printDiagonal(array2);
 
         System.out.println("Задание 4: Варинат 3.\n");
         int z = 10;
-        fillDiagonal3(z);
+        int[][] array3 = new int[z][z];
+        fillDiagonal3(array3, z);
+        printDiagonal(array3);
 
         System.out.println("Задание 5**.\n");
         int[] arr5 = {50, 7, 76, 92, 22, 72, 31, 67, 70, 20};

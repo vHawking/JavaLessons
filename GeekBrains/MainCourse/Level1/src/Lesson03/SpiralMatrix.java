@@ -16,8 +16,8 @@ public class SpiralMatrix {
     private static Scanner scan = new Scanner(System.in);
 
 /*
-    Метод заполняет матрицу по спирали по часовой стрелке.
-*/
+ *  Метод заполняет матрицу по спирали по часовой стрелке.
+ */
 
     private static void fillHelixC(int lastCol, int lastRow, int count, int k, int l, int[][] mas) {
 
@@ -47,8 +47,8 @@ public class SpiralMatrix {
     }
 
 /*
-    Метод заполняет матрицу по спирали против часовой стрелке.
-*/
+ *  Метод заполняет матрицу по спирали против часовой стрелке.
+ */
 
     private static void fillHelixCC(int lastCol, int lastRow, int count, int k, int l, int[][] mas) {
 
@@ -78,8 +78,8 @@ public class SpiralMatrix {
     }
 
 /*
-    Метод выводит в консоль заполненную по спирали матрицу.
-*/
+ *  Метод выводит в консоль заполненную по спирали матрицу.
+ */
 
     private static void printHelix(int col, int row, int dir, int[][] mas) {
 
@@ -101,9 +101,9 @@ public class SpiralMatrix {
     }
 
 /*
-    Отдельным методом foolProtect() реализована защита от дурака, чтобы юзер не вводил «стопиццот», или какую-нибудь
-    абра-кадабру, которая может сломать программу.
-*/
+ *  Отдельным методом foolProtect() реализована защита от дурака, чтобы юзер не вводил «стопиццот», или какую-нибудь
+ *  абра-кадабру, которая может сломать программу.
+ */
 
     private static void foolProtect() {
         while (!scan.hasNextInt()) {
