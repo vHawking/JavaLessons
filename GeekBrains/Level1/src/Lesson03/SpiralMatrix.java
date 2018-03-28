@@ -47,7 +47,7 @@ public class SpiralMatrix {
     }
 
 /*
- *  Метод заполняет матрицу по спирали против часовой стрелке.
+ *  Метод заполняет матрицу по спирали против часовой стрелки.
  */
 
     private static void fillHelixCC(int lastCol, int lastRow, int count, int k, int l, int[][] mas) {
