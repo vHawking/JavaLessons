@@ -37,6 +37,23 @@ public class BubbleSort {
         }
     }
 
+    // Пишем функцию для склонения слова «цикл» в зависимости от его числового значения.
+
+    private static String counterVars(int count) {
+        int x1;
+        int x2;
+        x1 = count % 10;
+        x2 = count % 100;
+
+        if (x1 == 1 && x2 != 11) {
+            return "цикл";
+        } else if (x1 >= 2 && x1 <= 4 && (x2 < 10 || x2 >= 20)) {
+            return "цикла";
+        } else {
+            return "циклов";
+        }
+    }
+
     // Классическая пузырьковая сортировка.
 
     private static int bubbleSort(int[] arr) {
@@ -117,14 +134,14 @@ public class BubbleSort {
         System.out.println("\nМассив до сортировки:\n" + Arrays.toString(arr0));
         count = bubbleSort(arr1);
         System.out.println("\nСортировка методом пузырька при помощи циклов for-for:\n" + Arrays.toString(arr1));
-        System.out.println("Количество операций: " + count);
+        System.out.printf("Количество операций: %d %s.\n", count, counterVars(count));
 
         count = bubbleSortOptimized(arr2);
         System.out.println("\nОптимизированная пузырьковая сортировка циклами for-for:\n" + Arrays.toString(arr2));
-        System.out.println("Количество операций: " + count);
+        System.out.printf("Количество операций: %d %s.\n", count, counterVars(count));
 
         count = bubbleSortWhile(arr3);
         System.out.println("\nОптимизированная пузырьковая сортировка циклом while:\n" + Arrays.toString(arr3));
-        System.out.println("Количество операций: " + count);
+        System.out.printf("Количество операций: %d %s.\n", count, counterVars(count));
     }
 }
