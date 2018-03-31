@@ -1,5 +1,14 @@
 package Lesson07;
 
+/**
+ * Java. Уровень1. Дополнительное домашнее задание по 7 лекции.
+ *
+ * @author Вадим Ястребов.
+ * @version 18 Февраля 2018 г.
+ *
+ * Привести строку к нормальному виду.
+ */
+
 public class MainClassString {
     public static void main(String[] args) {
 
