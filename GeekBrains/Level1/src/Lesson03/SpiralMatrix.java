@@ -118,7 +118,7 @@ public class SpiralMatrix {
         int count = 0, k = 0, l = 0;
 
         do {
-            System.out.print("\nВведите количество строк матрицы (не меньше 2): ");
+            System.out.print("Введите количество строк матрицы (не меньше 2): ");
             foolProtect();
             row = scan.nextInt();
             System.out.print("Введите количество столбцов матрицы (не меньше 2): ");
