@@ -318,24 +318,24 @@ public class HomeTask02 {
         System.out.println("Задание 6**: Вариант 1.\n");
         int[] arrVar1a = {20, 5, 6, 30, 1};
         boolean tf1a = checkBalance1(arrVar1a);
-        System.out.printf("В метод передан массив: %s\nТочка баланса %s.\n\n", Arrays.toString(arrVar1a), tf1a ?
-                "найдена: true" : "не найдена: false");
+        System.out.printf("В метод передан массив: %s\nТочка баланса %s найдена: %s.\n\n", Arrays.toString(arrVar1a),
+                tf1a ? "\b" : "не", tf1a);
 
         int[] arrVar1b = {2, 1, 1, 2, 1};
         boolean tf1b = checkBalance1(arrVar1b);
-        System.out.printf("В метод передан массив: %s\nТочка баланса %s.\n\n", Arrays.toString(arrVar1b), tf1b ?
-                "найдена: true" : "не найдена: false");
+        System.out.printf("В метод передан массив: %s\nТочка баланса %s найдена: %s.\n\n", Arrays.toString(arrVar1b),
+                tf1b ? "\b" : "не", tf1b);
 
         System.out.println("Задание 6**: Вариант 2.\n");
         int[] arrVar2a = {20, 5, 6, 30, 1};
         boolean tf2a = checkBalance2(arrVar2a);
-        System.out.printf("В метод передан массив: %s\nТочка баланса %s.\n\n", Arrays.toString(arrVar2a), tf2a ?
-                "найдена: true" : "не найдена: false");
+        System.out.printf("В метод передан массив: %s\nТочка баланса %s найдена: %s.\n\n", Arrays.toString(arrVar2a),
+                tf2a ? "\b" : "не", tf2a);
 
         int[] arrVar2b = {2, 1, 1, 2, 1};
         boolean tf2b = checkBalance2(arrVar2b);
-        System.out.printf("В метод передан массив: %s\nТочка баланса %s.\n\n", Arrays.toString(arrVar2b), tf2b ?
-                "найдена: true" : "не найдена: false");
+        System.out.printf("В метод передан массив: %s\nТочка баланса %s найдена: %s.\n\n", Arrays.toString(arrVar2b),
+                tf2b ? "\b" : "не", tf2b);
 
         System.out.println("Задание 7****. Вариант 1.\n");
         int[] arrShift1 = {11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
