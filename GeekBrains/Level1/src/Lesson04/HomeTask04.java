@@ -116,7 +116,7 @@ public class HomeTask04 {
     // 7b. Ход игрока
 
     private static void playerStep() {
-        int x = 0;
+        int x;
         int y;
         int row = SIZE_Y - 1;
         int col = SIZE_X - 1;
