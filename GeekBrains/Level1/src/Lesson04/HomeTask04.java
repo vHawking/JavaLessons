@@ -84,8 +84,9 @@ public class HomeTask04 {
 
     private static int charToNum(char y) {
         char letter = 'a';
+        char i;
 
-        for (char i = 0; i < SIZE_Y; i++) {
+        for (i = 0; i < SIZE_Y; i++) {
             if (y == letter) {
                 y = i;
             }
@@ -96,7 +97,7 @@ public class HomeTask04 {
 
     private static char numToChar(int row) {
         char y;
-        
+
         for (y = 0; y <= row; y++) {
             char letter = 'a';
             y = ++letter;
@@ -117,7 +118,7 @@ public class HomeTask04 {
             y = charToNum(scan.next().toLowerCase().charAt(0));
             System.out.printf("По вертикали от 0 до %d: ", col);
             x = scan.nextInt();
-        } while (!isCellValid(y, x));
+        } while (isCellValid(y, x));
         setSymbol(y, x, PLAYER_DOT);
     }
 
@@ -130,24 +131,27 @@ public class HomeTask04 {
 
         for (int v = 0; v < SIZE_Y; v++) {
             for (int h = 0; h < SIZE_X; h++) {
-                //анализ наличия поля для проверки
-                if (h + SIZE_WIN <= SIZE_X) {                           //по горизонтали
+                // Анализ наличия поля для проверки
+                if (h + SIZE_WIN <= SIZE_X) {
+                    // По горизонтали
                     if (checkLineHorizon(v, h, PLAYER_DOT) == SIZE_WIN - 1) {
                         if (MoveAiLineHorizon(v, h, AI_DOT)) return;
                     }
-
-                    if (v - SIZE_WIN > -2) {                            //вверх по диагонали
+                    if (v - SIZE_WIN > -2) {
+                        // Вверх по диагонали
                         if (checkDiaUp(v, h, PLAYER_DOT) == SIZE_WIN - 1) {
                             if (MoveAiDiaUp(v, h, AI_DOT)) return;
                         }
                     }
-                    if (v + SIZE_WIN <= SIZE_Y) {                       //вниз по диагонали
+                    // Вниз по диагонали
+                    if (v + SIZE_WIN <= SIZE_Y) {
                         if (checkDiaDown(v, h, PLAYER_DOT) == SIZE_WIN - 1) {
                             if (MoveAiDiaDown(v, h, AI_DOT)) return;
                         }
                     }
                 }
-                if (v + SIZE_WIN <= SIZE_Y) {                       //по вертикали
+                // По вертикали
+                if (v + SIZE_WIN <= SIZE_Y) {
                     if (checkLineVertical(v, h, PLAYER_DOT) == SIZE_WIN - 1) {
                         if (MoveAiLineVertical(v, h, AI_DOT)) return;
                     }
@@ -159,8 +163,9 @@ public class HomeTask04 {
 
         for (int v = 0; v < SIZE_Y; v++) {
             for (int h = 0; h < SIZE_X; h++) {
-                // Анализ наличия поля для проверки по горизонтали
+                // Анализ наличия поля для проверки
                 if (h + SIZE_WIN <= SIZE_X) {
+                    // По горизонтали
                     if (checkLineHorizon(v, h, AI_DOT) == SIZE_WIN - 1) {
                         if (MoveAiLineHorizon(v, h, AI_DOT)) return;
                     }
@@ -176,7 +181,6 @@ public class HomeTask04 {
                             if (MoveAiDiaDown(v, h, AI_DOT)) return;
                         }
                     }
-
                 }
                 // По вертикали
                 if (v + SIZE_WIN <= SIZE_Y) {
@@ -192,7 +196,7 @@ public class HomeTask04 {
         do {
             x = ran.nextInt(SIZE_X);
             y = ran.nextInt(SIZE_Y);
-        } while (!isCellValid(y, x));
+        } while (isCellValid(y, x));
         setSymbol(y, x, AI_DOT);
     }
 
@@ -248,10 +252,7 @@ public class HomeTask04 {
     // 13. Проверка, возможен ли ход
 
     private static boolean isCellValid(int y, int x) {
-        if (x < 0 || y < 0 || x > SIZE_X - 1 || y > SIZE_Y - 1) {
-            return false;
-        }
-        return (field[y][x] == EMPTY_DOT);
+        return x < 0 || y < 0 || x > SIZE_X - 1 || y > SIZE_Y - 1 || (field[y][x] != EMPTY_DOT);
     }
 
     // 14. Проверка заполненного поля (Если ничья)
