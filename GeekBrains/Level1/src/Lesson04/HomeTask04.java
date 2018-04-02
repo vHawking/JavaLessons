@@ -83,34 +83,24 @@ public class HomeTask04 {
     // 7a. Метод переназначает введенный символ переменной типа char в значение int, отвечающее за номер строки
 
     private static int charToNum(char y) {
-        switch (y) {
-            case 'a':
-                y = 0;
-                break;
-            case 'b':
-                y = 1;
-                break;
-            case 'c':
-                y = 2;
-                break;
+        char letter = 'a';
+
+        for (char i = 0; i < SIZE_Y; i++) {
+            if (y == letter) {
+                y = i;
+            }
+            ++letter;
         }
         return y;
     }
 
     private static char numToChar(int row) {
-        char y = (char) row;
-        switch (y) {
-            case 0:
-                y = 'a';
-                break;
-            case 1:
-                y = 'b';
-                break;
-            case 2:
-                y = 'c';
-                break;
+        char y;
+        for (y = 0; y <= row; y++) {
+            char letter = 'a';
+            y = ++letter;
         }
-    return y;
+        return y;
     }
 
     // 7b. Ход игрока
