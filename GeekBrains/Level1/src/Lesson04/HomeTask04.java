@@ -98,19 +98,13 @@ public class HomeTask04 {
     }
 
     private static char numToChar(int row) {
-        char y = (char) row;
-        switch (y) {
-            case 0:
-                y = 'a';
-                break;
-            case 1:
-                y = 'b';
-                break;
-            case 2:
-                y = 'c';
-                break;
+        char y;
+
+        for (y = 0; y <= row; y++) {
+            char letter = 'a';
+            y = ++letter;
         }
-    return y;
+        return y;
     }
 
     // 7b. Ход игрока
