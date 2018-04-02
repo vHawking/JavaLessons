@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 /**
  * Java. Уровень1. Домашнее задание по 4 лекции.
+ * Игра «Крестики-нолики» в процедурном стиле.
  *
  * @author Вадим Ястребов.
  * @version 9 Февраля 2018 г.
@@ -14,8 +15,8 @@ public class HomeTask04 {
 
     // 2. Определяем размер массива
 
-    private static final int SIZE_X = 5;
-    private static final int SIZE_Y = 5;
+    private static final int SIZE_X = 3;
+    private static final int SIZE_Y = 3;
     private static final int SIZE_WIN = 3;
     private static Scanner scan = new Scanner(System.in);
     private static final Random ran = new Random();
@@ -28,7 +29,7 @@ public class HomeTask04 {
 
     private static final char PLAYER_DOT = 'X';
     private static final char AI_DOT = 'O';
-    private static final char EMPTY_DOT = '∙';
+    private static final char EMPTY_DOT = ' ';
 
     // 4. Заполняем массив
 
@@ -44,7 +45,7 @@ public class HomeTask04 {
 
     private static void printField() {
         int numCol = 0;
-        char letterRow = 'A';
+        char letterRow = 'a';
 
         System.out.println();
         System.out.print("\t ");
@@ -79,16 +80,51 @@ public class HomeTask04 {
         field[y][x] = symbol;
     }
 
-    // 7. Ход игрока
+    // 7a. Метод переназначает введенный символ переменной типа char в значение int, отвечающее за номер строки
+
+    private static int charToNum(char y) {
+        switch (y) {
+            case 'a':
+                y = 0;
+                break;
+            case 'b':
+                y = 1;
+                break;
+            case 'c':
+                y = 2;
+                break;
+        }
+        return y;
+    }
+
+    private static char numToChar(int row) {
+        char y = (char) row;
+        switch (y) {
+            case 0:
+                y = 'a';
+                break;
+            case 1:
+                y = 'b';
+                break;
+            case 2:
+                y = 'c';
+                break;
+        }
+    return y;
+    }
+
+    // 7b. Ход игрока
 
     private static void playerStep() {
-        int x, y;
-
+        int x = 0;
+        int y;
+        int row = SIZE_Y - 1;
+        int col = SIZE_X - 1;
         do {
             System.out.println("\nВведите координаты для хода.");
-            System.out.printf("По горизонтали от 1 до %d: ", SIZE_Y);
-            y = scan.nextInt() - 1;
-            System.out.printf("По вертикали от 0 до %d: ", SIZE_X - 1);
+            System.out.printf("По горизонтали от a до %c: ", numToChar(row));
+            y = charToNum(scan.next().toLowerCase().charAt(0));
+            System.out.printf("По вертикали от 0 до %d: ", col);
             x = scan.nextInt();
         } while (!isCellValid(y, x));
         setSymbol(y, x, PLAYER_DOT);
@@ -99,7 +135,7 @@ public class HomeTask04 {
     private static void aiStep() {
         int x, y;
 
-        //блокировка ходов человека
+        // Блокировка ходов игрока
 
         for (int v = 0; v < SIZE_Y; v++) {
             for (int h = 0; h < SIZE_X; h++) {
@@ -132,25 +168,27 @@ public class HomeTask04 {
 
         for (int v = 0; v < SIZE_Y; v++) {
             for (int h = 0; h < SIZE_X; h++) {
-                //анализ наличия поля для проверки
-                if (h + SIZE_WIN <= SIZE_X) {                           //по горизонтали
+                // Анализ наличия поля для проверки по горизонтали
+                if (h + SIZE_WIN <= SIZE_X) {
                     if (checkLineHorizon(v, h, AI_DOT) == SIZE_WIN - 1) {
                         if (MoveAiLineHorizon(v, h, AI_DOT)) return;
                     }
-
-                    if (v - SIZE_WIN > -2) {                            //вверх по диагонали
+                    // Вверх по диагонали
+                    if (v - SIZE_WIN > -2) {
                         if (checkDiaUp(v, h, AI_DOT) == SIZE_WIN - 1) {
                             if (MoveAiDiaUp(v, h, AI_DOT)) return;
                         }
                     }
-                    if (v + SIZE_WIN <= SIZE_Y) {                       //вниз по диагонали
+                    // Вниз по диагонали
+                    if (v + SIZE_WIN <= SIZE_Y) {
                         if (checkDiaDown(v, h, AI_DOT) == SIZE_WIN - 1) {
                             if (MoveAiDiaDown(v, h, AI_DOT)) return;
                         }
                     }
 
                 }
-                if (v + SIZE_WIN <= SIZE_Y) {                       //по вертикали
+                // По вертикали
+                if (v + SIZE_WIN <= SIZE_Y) {
                     if (checkLineVertical(v, h, AI_DOT) == SIZE_WIN - 1) {
                         if (MoveAiLineVertical(v, h, AI_DOT)) return;
                     }
@@ -158,7 +196,7 @@ public class HomeTask04 {
             }
         }
 
-        //случайный ход
+        // Случайный ход
 
         do {
             x = ran.nextInt(SIZE_X);
@@ -167,7 +205,7 @@ public class HomeTask04 {
         setSymbol(y, x, AI_DOT);
     }
 
-    //ход компьютера по горизонтали
+    // 9. Ход компьютера по горизонтали
 
     private static boolean MoveAiLineHorizon(int v, int h, char symbol) {
         for (int j = h; j < SIZE_WIN; j++) {
@@ -179,7 +217,7 @@ public class HomeTask04 {
         return false;
     }
 
-    //ход компьютера по вертикали
+    // 10. Ход компьютера по вертикали
 
     private static boolean MoveAiLineVertical(int v, int h, char symbol) {
         for (int i = v; i < SIZE_WIN; i++) {
@@ -191,7 +229,7 @@ public class HomeTask04 {
         return false;
     }
 
-    //проверка заполнения всей линий по диагонали вверх
+    // 11. Проверка заполнения всей линий по диагонали вверх
 
     private static boolean MoveAiDiaUp(int v, int h, char symbol) {
         for (int i = 0, j = 0; j < SIZE_WIN; i--, j++) {
@@ -203,7 +241,7 @@ public class HomeTask04 {
         return false;
     }
 
-    //проверка заполнения всей линии по диагонали вниз
+    // 12. Проверка заполнения всей линии по диагонали вниз
 
     private static boolean MoveAiDiaDown(int v, int h, char symbol) {
 
@@ -216,7 +254,7 @@ public class HomeTask04 {
         return false;
     }
 
-    // 9. Проверка, возможен ли ход
+    // 13. Проверка, возможен ли ход
 
     private static boolean isCellValid(int y, int x) {
         if (x < 0 || y < 0 || x > SIZE_X - 1 || y > SIZE_Y - 1) {
@@ -225,7 +263,7 @@ public class HomeTask04 {
         return (field[y][x] == EMPTY_DOT);
     }
 
-    // 10. Проверка заполненного поля (Если ничья)
+    // 14. Проверка заполненного поля (Если ничья)
 
     private static boolean isFieldFull() {
         for (int i = 0; i < SIZE_X; i++) {
@@ -238,7 +276,7 @@ public class HomeTask04 {
         return true;
     }
 
-    // 11. Проверка на победу
+    // 15. Проверка на победу
 
     private static boolean checkWin(char symbol) {
         for (int v = 0; v < SIZE_Y; v++) {
@@ -273,7 +311,7 @@ public class HomeTask04 {
         return false;
     }
 
-    // Проверка заполнения всех линий по горизонтали
+    // 16. Проверка заполнения всех линий по горизонтали
 
     private static int checkLineHorizon(int v, int h, char symbol) {
         int count = 0;
@@ -286,7 +324,7 @@ public class HomeTask04 {
         return count;
     }
 
-    // Проверка заполнения всех линий по вертикали
+    // 17. Проверка заполнения всех линий по вертикали
 
     private static int checkLineVertical(int v, int h, char symbol) {
         int count = 0;
@@ -299,7 +337,7 @@ public class HomeTask04 {
         return count;
     }
 
-    // Проверка заполнения всех линий по диагонали вверх
+    // 18. Проверка заполнения всех линий по диагонали вверх
 
     private static int checkDiaUp(int v, int h, char symbol) {
         int count = 0;
@@ -312,7 +350,7 @@ public class HomeTask04 {
         return count;
     }
 
-    // Проверка заполнения всех линий по диагонали вниз
+    // 19. Проверка заполнения всех линий по диагонали вниз
 
     private static int checkDiaDown(int v, int h, char symbol) {
         int count = 0;
@@ -325,9 +363,11 @@ public class HomeTask04 {
         return count;
     }
 
+    // 20. Метод main – точка входа в программу
+
     public static void main(String[] args) {
 
-        System.out.printf("\nИгра с компьютером в «Крестики-Нолики».\nВаш символ – (%c), и у вас преимущество первого " +
+        System.out.printf("Игра с компьютером в «Крестики-Нолики».\nВаш символ – (%c), и у вас преимущество первого " +
                 "хода.\n", PLAYER_DOT);
 
         initField();
