@@ -96,6 +96,7 @@ public class HomeTask04 {
 
     private static char numToChar(int row) {
         char y;
+        
         for (y = 0; y <= row; y++) {
             char letter = 'a';
             y = ++letter;
