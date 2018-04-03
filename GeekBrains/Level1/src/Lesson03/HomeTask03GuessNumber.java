@@ -92,7 +92,7 @@ public class HomeTask03GuessNumber {
             guessNumber(cpuNum);
         } while (exitGame());
         System.out.println("Завершение работы программы.\nИгра окончена.");
-
+        System.out.println("© 2018 Вадим Ястребов, mailcome@yandex.ru.");
         scanner.close();
     }
 }
