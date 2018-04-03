@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class HomeTask03GuessNumber {
     private static final int minRange = 0;
     private static final int maxRange = 9;
-    private static int tryNumbers = 3;
+    private static final int tryNumbers = 3;
     private static Scanner scanner = new Scanner(System.in);
 
 /*
@@ -91,7 +91,7 @@ public class HomeTask03GuessNumber {
                     "\nКоличество попыток: %d.\n\n", tryNumbers);
             guessNumber(cpuNum);
         } while (exitGame());
-        System.out.println("\nЗавершение работы программы.\nИгра окончена.");
+        System.out.println("Завершение работы программы.\nИгра окончена.");
 
         scanner.close();
     }
