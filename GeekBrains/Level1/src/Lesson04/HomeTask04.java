@@ -95,6 +95,8 @@ public class HomeTask04 {
         return y;
     }
 
+    // 7b. Метод переназначает введенный символ переменной типа char в значение int, отвечающее за номер столбца
+
     private static int rowToInt(char x) {
         char number = '0';
         char i;
@@ -108,7 +110,7 @@ public class HomeTask04 {
         return x;
     }
 
-    // 7b. Ход игрока
+    // 7b. Метод считывает с клавиатуры координаты ячейки для того, чтобы осуществить ход игрока
 
     private static void playerStep() {
         int x;
