@@ -14,48 +14,43 @@ import java.util.Scanner;
  */
 
 public class HomeTask03GuessNumber {
+    private static final int minRange = 0;
+    private static final int maxRange = 9;
+    private static int tryNumbers = 3;
     private static Scanner scanner = new Scanner(System.in);
 
 /*
-     Метод guessNumber() состоит из двух вложенных циклов. Первый: do-while для того, чтобы у пользователя была
-     позможность выбора: продолжить игру, или выйти после того, как игрок исчерпает количество попыток угадать число.
-     Второй цикл – while() выполняется столько раз, сколько задано попыток угадать число в методе main. По умолчанию это
-     значение равно 3.
+     Метод guessNumber() состоит из цикла while() и выполняется столько раз, сколько задано попыток угадать число
+     в переменной tryNumbers. По умолчанию это значение равно 3.
 */
 
-    private static void guessNumber(int tryNumbers, int minRange, int maxRange) {
-            do {
-                int tryTimes = tryNumbers;
-                int cpuNum = (int) (Math.random() * maxRange);
-                System.out.printf("\nИгра предлагает угадать число, загаданное компьютером." +
-                        "\nКоличество попыток: %d.\n\n", tryNumbers);
-                while (tryTimes > 0) {
-                    System.out.printf("Введите число от %d до %d: ", minRange, maxRange);
-                    foolProtect();
-                    int userNum = scanner.nextInt();
-                    if (userNum < cpuNum) {
-                        System.out.println("Ваше число меньше загаданного компьютером.");
-                    } else if (userNum > cpuNum) {
-                        System.out.println("Ваше число больше загаданного компьютером.");
-                    } else {
-                        System.out.println("Поздравляем! Вы угадали число!");
-                        break;
-                    }
-                    tryTimes--;
-                    System.out.println((tryTimes > 0) ? "Осталось попыток: " + tryTimes + "\n" :
-                            "У вас не осталось попыток.\nВы проиграли.");
-                }
-            } while (exitGame());
-        System.out.println("\nЗавершение работы программы.\nИгра окончена.");
+    private static void guessNumber(int cpuNum) {
+        int tryTimes = tryNumbers;
+        while (tryTimes > 0) {
+            System.out.printf("Введите число от %d до %d: ", minRange, maxRange);
+            foolProtect();
+            int userNum = scanner.nextInt();
+            if (userNum < cpuNum) {
+                System.out.println("Ваше число меньше загаданного компьютером.");
+            } else if (userNum > cpuNum) {
+                System.out.println("Ваше число больше загаданного компьютером.");
+            } else {
+                System.out.println("Поздравляем! Вы угадали число!\n");
+                break;
+            }
+            tryTimes--;
+            System.out.println((tryTimes > 0) ? "Осталось попыток: " + tryTimes + "\n" :
+                    "У вас не осталось попыток. Вы проиграли.\n");
+            }
     }
 
 /*
-    Метод exitGame() возвращает 0 в цикл do-while метода guessNumber() для выхода из основного цикла программы, или
-    1 для продолжения. Другие значения метод игнорирует и просит ввести либо 0, либо 1.
+    Метод exitGame() возвращает 0 в цикл do-while для выхода из основного цикла программы, или 1 для продолжения.
+    Другие значения метод игнорирует и просит ввести либо 0, либо 1.
 */
 
     private static boolean exitGame() {
-        System.out.print("\nХотите снова поиграть?\n1 – Да / 0 - Выход из программы: ");
+        System.out.print("Хотите снова поиграть?\n1 – Да / 0 - Выход из программы: ");
         int exit;
         boolean flag;
         do {
@@ -67,6 +62,7 @@ public class HomeTask03GuessNumber {
                 System.out.print("Введите 1, или 0: ");
             }
         } while (!flag);
+        System.out.println();
         return exit != 0;
     }
 
@@ -83,16 +79,20 @@ public class HomeTask03GuessNumber {
     }
 
 /*
-    В методе main() инициализируем переменные, отвечающие за количество попыток и диапазон загадываемого значения. После
-    чего, вызываем метод guessNumber() и передаём туда значения этих переменных.
+    Цикл do-while в методе main служит для того, чтобы у пользователя была позможность выбора: продолжить игру,
+    или выйти после того, как игрок исчерпает количество попыток угадать число.
 */
 
     public static void main(String[] args) {
-        int minRange = 0;
-        int maxRange = 9;
-        int tryNumbers = 3;
+        do {
+            int cpuNum = (int) (Math.random() * maxRange);
 
-        guessNumber(tryNumbers, minRange, maxRange);
+            System.out.printf("Игра предлагает угадать число, загаданное компьютером." +
+                    "\nКоличество попыток: %d.\n\n", tryNumbers);
+            guessNumber(cpuNum);
+        } while (exitGame());
+        System.out.println("\nЗавершение работы программы.\nИгра окончена.");
+
         scanner.close();
     }
 }
