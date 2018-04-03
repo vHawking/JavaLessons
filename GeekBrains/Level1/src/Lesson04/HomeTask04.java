@@ -1,7 +1,5 @@
 package Lesson04;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -84,7 +82,7 @@ public class HomeTask04 {
 
     // 7a. Метод переназначает введенный символ переменной типа char в значение int, отвечающее за номер строки
 
-    private static int charSymToNum(char y) {
+    private static int colToInt(char y) {
         char letter = 'a';
         char i;
 
@@ -97,7 +95,7 @@ public class HomeTask04 {
         return y;
     }
 
-    private static int charNumToNum(char x) {
+    private static int rowToInt(char x) {
         char number = '0';
         char i;
 
@@ -120,8 +118,8 @@ public class HomeTask04 {
             System.out.print("\nВаш ход (a1, b2, c3 и т.д.): ");
             String playerStep = scan.nextLine().toLowerCase();
             char[] coord = playerStep.toCharArray();
-                y = charSymToNum(coord[0]);
-                x = charNumToNum(coord[1]);
+            y = colToInt(coord[0]);
+            x = rowToInt(coord[1]);
         } while (isCellValid(y, x));
         setSymbol(y, x, PLAYER_DOT);
     }
