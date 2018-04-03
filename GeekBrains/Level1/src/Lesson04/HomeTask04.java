@@ -1,5 +1,7 @@
 package Lesson04;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -82,7 +84,7 @@ public class HomeTask04 {
 
     // 7a. Метод переназначает введенный символ переменной типа char в значение int, отвечающее за номер строки
 
-    private static int charToNum(char y) {
+    private static int charSymToNum(char y) {
         char letter = 'a';
         char i;
 
@@ -95,14 +97,17 @@ public class HomeTask04 {
         return y;
     }
 
-    private static char numToChar(int row) {
-        char y;
+    private static int charNumToNum(char x) {
+        char number = '0';
+        char i;
 
-        for (y = 0; y <= row; y++) {
-            char letter = 'a';
-            y = ++letter;
+        for (i = 0; i < SIZE_Y; i++) {
+            if (x == number) {
+                x = i;
+            }
+            ++number;
         }
-        return y;
+        return x;
     }
 
     // 7b. Ход игрока
@@ -110,14 +115,13 @@ public class HomeTask04 {
     private static void playerStep() {
         int x;
         int y;
-        int row = SIZE_Y - 1;
-        int col = SIZE_X - 1;
+
         do {
-            System.out.println("\nВведите координаты для хода.");
-            System.out.printf("По горизонтали от a до %c: ", numToChar(row));
-            y = charToNum(scan.next().toLowerCase().charAt(0));
-            System.out.printf("По вертикали от 0 до %d: ", col);
-            x = scan.nextInt();
+            System.out.print("\nВаш ход (a1, b2, c3 и т.д.): ");
+            String playerStep = scan.nextLine().toLowerCase();
+            char[] coord = playerStep.toCharArray();
+                y = charSymToNum(coord[0]);
+                x = charNumToNum(coord[1]);
         } while (isCellValid(y, x));
         setSymbol(y, x, PLAYER_DOT);
     }
@@ -359,8 +363,8 @@ public class HomeTask04 {
 
     public static void main(String[] args) {
 
-        System.out.printf("Игра с компьютером в «Крестики-Нолики».\nВаш символ – (%c), и у вас преимущество первого " +
-                "хода.\n", PLAYER_DOT);
+        System.out.println("Игра с компьютером в «Крестики-Нолики».");
+        System.out.println("Ваш символ – крестик (X).\nУ вас преимущество первого хода.");
 
         initField();
         printField();
@@ -384,7 +388,7 @@ public class HomeTask04 {
             printField();
 
             if (checkWin(AI_DOT)) {
-                System.out.println("\nВы проиграли!");
+                System.out.println("\nВы проиграли.");
                 break;
             }
 
@@ -393,6 +397,8 @@ public class HomeTask04 {
                 break;
             }
         }
+        System.out.println("Игра окончена.");
+        System.out.println("© 2018 Вадим Ястребов, mailcome@yandex.ru.");
         scan.close();
     }
 }
