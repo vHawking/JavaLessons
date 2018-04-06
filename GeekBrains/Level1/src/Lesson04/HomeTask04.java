@@ -131,7 +131,6 @@ public class HomeTask04 {
                 setSymbol(y, x, PLAYER_DOT);
             } catch (Exception e) {
                 System.out.println("Неверное значение для хода.");
-
             }
         }
     }
