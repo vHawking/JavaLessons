@@ -373,7 +373,7 @@ public class HomeTask04 {
     public static void main(String[] args) {
 
         System.out.println("Игра с компьютером в «Крестики-Нолики».");
-        System.out.println("Ваш символ – крестик (X).\nУ вас преимущество первого хода.");
+        System.out.println("Игрок ходит крестиком (X), компьютер – ноликом (O).");
 
         initField();
         printField();
