@@ -76,6 +76,9 @@ public class HomeTask04 {
     // 6. Установка символа на поле
 
     private static void setSymbol(int y, int x, char symbol) {
+        if (field[y][x] != EMPTY_DOT) {
+            System.out.println("На эту клетку ход невозможен.");
+        }
         field[y][x] = symbol;
     }
 
@@ -114,20 +117,23 @@ public class HomeTask04 {
     // 7c. Метод считывает с клавиатуры координаты ячейки для того, чтобы осуществить ход игрока
 
     private static void playerStep() {
-        int x = -1;
-        int y = -1;
+        int x;
+        int y;
+        boolean loop = true;
 
-        do {
+        while (loop) {
             try {
                 System.out.print("\nВаш ход (a1, b2, c3 и т.д.): ");
                 String playerStep = scan.nextLine().toLowerCase();
                 y = colToInt(playerStep.charAt(0));
                 x = rowToInt(playerStep.charAt(1));
-            } catch (StringIndexOutOfBoundsException e) {
-                System.out.println("Неверный формат хода!");
+                loop = isCellValid(y, x);
+                setSymbol(y, x, PLAYER_DOT);
+            } catch (Exception e) {
+                System.out.println("Неверное значение для хода.");
+
             }
-        } while (isCellValid(y, x));
-        setSymbol(y, x, PLAYER_DOT);
+        }
     }
 
     // 8. Ход компьютера (AI)
@@ -260,7 +266,7 @@ public class HomeTask04 {
     // 13. Проверка, возможен ли ход
 
     private static boolean isCellValid(int y, int x) {
-        return x < 0 || y < 0 || x > SIZE_X - 1 || y > SIZE_Y - 1 || (field[y][x] != EMPTY_DOT);
+        return x < 0 || y < 0 || x > SIZE_X - 1 || y > SIZE_Y - 1 || field[y][x] != EMPTY_DOT;
     }
 
     // 14. Проверка заполненного поля (Если ничья)
