@@ -1,9 +1,11 @@
 package Lesson03;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
  * Java. Уровень1. Домашнее задание по 3 лекции.
+ * Игра «Угадай число».
  *
  * @author Вадим Ястребов.
  * @version 5 Февраля 2018 г.
@@ -23,25 +25,27 @@ public class HomeTask03GuessNumber {
      Метод guessNumber() состоит из цикла while() и выполняется столько раз, сколько задано попыток угадать число
      в переменной tryNumbers. По умолчанию это значение равно 3.
 */
-
     private static void guessNumber(int cpuNum) {
         int tryTimes = tryNumbers;
         while (tryTimes > 0) {
             System.out.printf("Введите число от %d до %d: ", minRange, maxRange);
-            foolProtect();
-            int userNum = scanner.nextInt();
-            if (userNum < cpuNum) {
-                System.out.println("Ваше число меньше загаданного компьютером.");
-            } else if (userNum > cpuNum) {
-                System.out.println("Ваше число больше загаданного компьютером.");
-            } else {
-                System.out.println("Поздравляем! Вы угадали число!\n");
-                break;
-            }
+            try {
+                int userNum = scanner.nextInt();
+                if (userNum < cpuNum) {
+                    System.out.println("Ваше число меньше загаданного компьютером.");
+                } else if (userNum > cpuNum) {
+                    System.out.println("Ваше число больше загаданного компьютером.");
+                } else {
+                    System.out.println("Поздравляем! Вы угадали число!\n");
+                    break;
+                }
             tryTimes--;
             System.out.println((tryTimes > 0) ? "Осталось попыток: " + tryTimes + "\n" :
-                    "У вас не осталось попыток. Вы проиграли.\n");
+                    "У вас не осталось попыток. Было загадано число " + cpuNum + ".\nВы проиграли.\n");
+            } catch (InputMismatchException e) {
+                scanner.next();
             }
+        }
     }
 
 /*
@@ -50,31 +54,17 @@ public class HomeTask03GuessNumber {
 */
 
     private static boolean exitGame() {
-        System.out.print("Хотите снова поиграть?\n1 – Да / 0 - Выход из программы: ");
         int exit;
-        boolean flag;
-        do {
-            flag = true;
-            foolProtect();
-            exit = scanner.nextInt();
-            if (exit < 0 || exit > 1) {
-                flag = false;
-                System.out.print("Введите 1, или 0: ");
+
+        while (true) {
+            System.out.print("Хотите снова поиграть?\n1 – Да / 0 - Выход из программы: ");
+            try {
+                exit = scanner.nextInt();
+                System.out.println();
+                return exit != 0;
+            } catch (InputMismatchException e) {
+                scanner.next();
             }
-        } while (!flag);
-        System.out.println();
-        return exit != 0;
-    }
-
-/*
-    Отдельным методом foolProtect() реализована защита от дурака, чтобы юзер не вводил «стопиццот», или какую-нибудь
-    абра-кадабру, которая может сломать программу.
-*/
-
-    private static void foolProtect() {
-        while (!scanner.hasNextInt()) {
-            System.out.print("Неверный формат. Введите целое число: ");
-            scanner.next();
         }
     }
 
@@ -86,7 +76,6 @@ public class HomeTask03GuessNumber {
     public static void main(String[] args) {
         do {
             int cpuNum = (int) (Math.random() * maxRange);
-
             System.out.printf("Игра предлагает угадать число, загаданное компьютером." +
                     "\nКоличество попыток: %d.\n\n", tryNumbers);
             guessNumber(cpuNum);
