@@ -57,8 +57,8 @@ public class HomeTask03GuessNumber {
         int exit;
 
         while (true) {
-            System.out.print("Хотите снова поиграть?\n1 – Да / 0 - Выход из программы: ");
             try {
+                System.out.print("Хотите снова поиграть?\n1 – Да / 0 - Выход из программы: ");
                 exit = scanner.nextInt();
                 System.out.println();
                 return exit != 0;
