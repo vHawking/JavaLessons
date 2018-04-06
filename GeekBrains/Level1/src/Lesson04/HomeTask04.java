@@ -73,7 +73,6 @@ public class HomeTask04 {
             System.out.println();
         }
     }
-
     // 6. Установка символа на поле
 
     private static void setSymbol(int y, int x, char symbol) {
@@ -89,6 +88,7 @@ public class HomeTask04 {
         for (i = 0; i < SIZE_Y; i++) {
             if (y == letter) {
                 y = i;
+                break;
             }
             ++letter;
         }
@@ -101,27 +101,31 @@ public class HomeTask04 {
         char number = '0';
         char i;
 
-        for (i = 0; i < SIZE_Y; i++) {
+        for (i = 0; i < SIZE_X; i++) {
             if (x == number) {
                 x = i;
+                break;
             }
             ++number;
         }
         return x;
     }
 
-    // 7b. Метод считывает с клавиатуры координаты ячейки для того, чтобы осуществить ход игрока
+    // 7c. Метод считывает с клавиатуры координаты ячейки для того, чтобы осуществить ход игрока
 
     private static void playerStep() {
-        int x;
-        int y;
+        int x = -1;
+        int y = -1;
 
         do {
-            System.out.print("\nВаш ход (a1, b2, c3 и т.д.): ");
-            String playerStep = scan.nextLine().toLowerCase();
-            char[] coord = playerStep.toCharArray();
-            y = colToInt(coord[0]);
-            x = rowToInt(coord[1]);
+            try {
+                System.out.print("\nВаш ход (a1, b2, c3 и т.д.): ");
+                String playerStep = scan.nextLine().toLowerCase();
+                y = colToInt(playerStep.charAt(0));
+                x = rowToInt(playerStep.charAt(1));
+            } catch (StringIndexOutOfBoundsException e) {
+                System.out.println("Неверный формат хода!");
+            }
         } while (isCellValid(y, x));
         setSymbol(y, x, PLAYER_DOT);
     }
