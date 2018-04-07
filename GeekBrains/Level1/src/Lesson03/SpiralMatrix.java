@@ -14,13 +14,19 @@ import java.util.Scanner;
  */
 
 public class SpiralMatrix {
+    private static int count = 0;
+    private static int k = 0;
+    private static int l = 0;
     private static Scanner scan = new Scanner(System.in);
 
 /*
  *  Метод заполняет матрицу по спирали по часовой стрелке.
  */
 
-    private static void fillHelixC(int lastCol, int lastRow, int count, int k, int l, int[][] mas) {
+    private static void fillHelixC(int col, int row, int[][] mas) {
+        int lastRow = row - 1;
+        int lastCol = col - 1;
+
         while (k <= lastRow && l <= lastCol) {
 
             for (int i = l; i <= lastCol; i++) {
@@ -51,7 +57,10 @@ public class SpiralMatrix {
  *  Метод заполняет матрицу по спирали против часовой стрелки.
  */
 
-    private static void fillHelixCC(int lastCol, int lastRow, int count, int k, int l, int[][] mas) {
+    private static void fillHelixCC(int col, int row, int[][] mas) {
+        int lastRow = row - 1;
+        int lastCol = col - 1;
+
         while (k <= lastRow && l <= lastCol) {
 
             for (int i = k; i <= lastRow; i++) {
@@ -103,7 +112,6 @@ public class SpiralMatrix {
     public static void main(String[] args) {
         int row, col;
         int dir;
-        int count = 0, k = 0, l = 0;
         boolean loop = true;
 
         while (loop) {
@@ -116,15 +124,13 @@ public class SpiralMatrix {
                 dir = scan.nextInt();
 
                 if (row > 2 || col > 2 && dir == 1 || dir == 2) {
-                    int lastRow = row - 1;
-                    int lastCol = col - 1;
                     int[][] mas = new int[row][col];
 
                     if (dir == 1) {
-                        fillHelixC(lastCol, lastRow, count, k, l, mas);
+                        fillHelixC(col, row, mas);
                         printHelix(col, row, dir, mas);
                     } else {
-                        fillHelixCC(lastCol, lastRow, count, k, l, mas);
+                        fillHelixCC(col, row, mas);
                         printHelix(col, row, dir, mas);
                     }
                     loop = false;
