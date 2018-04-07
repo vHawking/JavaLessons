@@ -22,7 +22,8 @@ public class HomeTask03GuessNumber {
     private static Scanner scanner = new Scanner(System.in);
 
 /*
-     Учим программу общаться по-человечески на русском языке и склонять слово «попытка» от её числового количества.
+     Метод triesCount() позволяет программе общаться с пользователем по-человечески на русском языке и склонять
+     слово «попытка» в зависимости его числового количества и значения.
 */
 
     private static String triesCount(int tryTimes) {
