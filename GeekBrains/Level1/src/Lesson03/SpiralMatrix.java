@@ -85,7 +85,7 @@ public class SpiralMatrix {
  *  Метод выводит в консоль заполненную по спирали матрицу.
  */
 
-    private static void printHelix(int col, int row, int dir, int[][] mas) {
+    private static void printHelix(int row, int col, int dir, int[][] mas) {
         System.out.printf("\nМатрица заполнена по спирали %s", (dir == 1) ? "по часовой стрелке.\n\n" : "против " +
                 "часовой стрелки.\n\n");
 
@@ -124,10 +124,10 @@ public class SpiralMatrix {
 
                     if (dir == 1) {
                         fillHelixC(lastRow, lastCol, mas);
-                        printHelix(col, row, dir, mas);
+                        printHelix(row, col, dir, mas);
                     } else {
                         fillHelixCC(lastRow, lastCol, mas);
-                        printHelix(col, row, dir, mas);
+                        printHelix(row, col, dir, mas);
                     }
                     loop = false;
                 } else {
