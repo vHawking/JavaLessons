@@ -129,7 +129,7 @@ public class HomeTask04 {
                 x = rowToInt(playerStep.charAt(1));
                 loop = isCellValid(y, x);
                 setSymbol(y, x, PLAYER_DOT);
-            } catch (Exception e) {
+            } catch (ArrayIndexOutOfBoundsException | StringIndexOutOfBoundsException ex) {
                 System.out.println("Неверное значение для хода.");
             }
         }
