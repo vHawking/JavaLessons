@@ -21,8 +21,8 @@ public class SpiralMatrix {
  */
 
     private static void fillHelixC(int lastCol, int lastRow, int count, int k, int l, int[][] mas) {
-
         while (k <= lastRow && l <= lastCol) {
+
             for (int i = l; i <= lastCol; i++) {
                 mas[k][i] = count++;
             }
@@ -52,8 +52,8 @@ public class SpiralMatrix {
  */
 
     private static void fillHelixCC(int lastCol, int lastRow, int count, int k, int l, int[][] mas) {
-
         while (k <= lastRow && l <= lastCol) {
+
             for (int i = k; i <= lastRow; i++) {
                 mas[i][k] = count++;
             }
@@ -83,7 +83,6 @@ public class SpiralMatrix {
  */
 
     private static void printHelix(int col, int row, int dir, int[][] mas) {
-
         System.out.printf("\nМатрица заполнена по спирали %s", (dir == 1) ? "по часовой стрелке.\n\n" : "против " +
                 "часовой стрелки.\n\n");
 
