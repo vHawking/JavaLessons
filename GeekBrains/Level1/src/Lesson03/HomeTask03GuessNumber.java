@@ -22,8 +22,27 @@ public class HomeTask03GuessNumber {
     private static Scanner scanner = new Scanner(System.in);
 
 /*
+     Учим программу общаться по-человечески на русском языке и склонять слово «попытка» от её числового количества.
+*/
+
+    private static String triesCount(int tryTimes) {
+        int t1;
+        int t2;
+        t1 = tryTimes % 10;
+        t2 = tryTimes % 100;
+
+        if (t1 == 1 && t2 != 11) {
+            return "попытка";
+        } else if (t1 >= 2 && t1 <= 4 && (t2 < 10 || t2 >= 20)) {
+            return "попытки";
+        } else {
+            return "попыток";
+        }
+    }
+
+/*
      Метод guessNumber() состоит из цикла while() и выполняется столько раз, сколько задано попыток угадать число
-     в переменной tryNumbers. По умолчанию это значение равно 3.
+     в переменной tryNumbers. По-умолчанию это значение равно 3.
 */
     private static void guessNumber(int cpuNum) {
         int tryTimes = tryNumbers;
@@ -40,8 +59,12 @@ public class HomeTask03GuessNumber {
                     break;
                 }
             tryTimes--;
-            System.out.println((tryTimes > 0) ? "Осталось попыток: " + tryTimes + "\n" :
-                    "У вас не осталось попыток. Было загадано число " + cpuNum + ".\nВы проиграли.\n");
+                if (tryTimes > 0) {
+                    String tries = triesCount(tryTimes);
+                    System.out.printf("Остал%cсь %d %s.\n\n", (tries.equals("попытка")) ? 'а' : 'о', tryTimes, tries);
+                } else {
+                    System.out.printf("У вас не осталось попыток. Было загадано число %d.\nВы проиграли.\n\n", cpuNum);
+                }
             } catch (InputMismatchException e) {
                 scanner.next();
             }
