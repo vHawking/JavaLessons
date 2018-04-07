@@ -23,10 +23,7 @@ public class SpiralMatrix {
  *  Метод заполняет матрицу по спирали по часовой стрелке.
  */
 
-    private static void fillHelixC(int col, int row, int[][] mas) {
-        int lastRow = row - 1;
-        int lastCol = col - 1;
-
+    private static void fillHelixC(int lastRow, int lastCol, int[][] mas) {
         while (k <= lastRow && l <= lastCol) {
 
             for (int i = l; i <= lastCol; i++) {
@@ -57,10 +54,7 @@ public class SpiralMatrix {
  *  Метод заполняет матрицу по спирали против часовой стрелки.
  */
 
-    private static void fillHelixCC(int col, int row, int[][] mas) {
-        int lastRow = row - 1;
-        int lastCol = col - 1;
-
+    private static void fillHelixCC(int lastRow, int lastCol, int[][] mas) {
         while (k <= lastRow && l <= lastCol) {
 
             for (int i = k; i <= lastRow; i++) {
@@ -120,17 +114,19 @@ public class SpiralMatrix {
                 row = scan.nextInt();
                 System.out.print("Введите количество столбцов матрицы (не меньше 2): ");
                 col = scan.nextInt();
-                System.out.print("\nУкажите направление витков спирали.\n1 – по часовой стрелке / 2 – против часовой): ");
+                System.out.print("\nУкажите направление витков спирали.\n1 – по часовой стрелке / 2 – против часовой: ");
                 dir = scan.nextInt();
 
                 if (row > 2 || col > 2 && dir == 1 || dir == 2) {
                     int[][] mas = new int[row][col];
+                    int lastRow = row - 1;
+                    int lastCol = col - 1;
 
                     if (dir == 1) {
-                        fillHelixC(col, row, mas);
+                        fillHelixC(lastRow, lastCol, mas);
                         printHelix(col, row, dir, mas);
                     } else {
-                        fillHelixCC(col, row, mas);
+                        fillHelixCC(lastRow, lastCol, mas);
                         printHelix(col, row, dir, mas);
                     }
                     loop = false;
