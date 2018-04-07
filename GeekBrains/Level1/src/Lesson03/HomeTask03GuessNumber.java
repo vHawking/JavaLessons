@@ -47,6 +47,7 @@ public class HomeTask03GuessNumber {
 */
     private static void guessNumber(int cpuNum) {
         int tryTimes = tryNumbers;
+
         while (tryTimes > 0) {
             System.out.printf("Введите число от %d до %d: ", minRange, maxRange);
             try {
@@ -60,6 +61,7 @@ public class HomeTask03GuessNumber {
                     break;
                 }
             tryTimes--;
+
                 if (tryTimes > 0) {
                     String tries = triesCount(tryTimes);
                     System.out.printf("Остал%cсь %d %s.\n\n", (tries.equals("попытка")) ? 'а' : 'о', tryTimes, tries);
