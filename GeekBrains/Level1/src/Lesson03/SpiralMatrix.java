@@ -1,5 +1,6 @@
 package Lesson03;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Scanner;
  * @author Вадим Ястребов.
  * @version 5 Февраля 2018 г.
  *
- * С консоли ввести два целоцисленных числа и создать матрицу с указанной размерностью.
+ * С консоли ввести два целочисленных числа и создать матрицу с указанной размерностью.
  * Заполнить матрицу по спирали (числа увеличиваются на 1).
  */
 
@@ -83,7 +84,7 @@ public class SpiralMatrix {
 
     private static void printHelix(int col, int row, int dir, int[][] mas) {
 
-        System.out.printf("\nВид заполненной матрицы по спирали %s", (dir == 1) ? "по часовой стрелке.\n\n" : "против " +
+        System.out.printf("\nМатрица заполнена по спирали %s", (dir == 1) ? "по часовой стрелке.\n\n" : "против " +
                 "часовой стрелки.\n\n");
 
         for (int i = 0; i < row; i++) {
@@ -100,45 +101,41 @@ public class SpiralMatrix {
         }
     }
 
-/*
- *  Отдельным методом foolProtect() реализована защита от дурака, чтобы юзер не вводил «стопиццот», или какую-нибудь
- *  абра-кадабру, которая может сломать программу.
- */
-
-    private static void foolProtect() {
-        while (!scan.hasNextInt()) {
-            System.out.print("Неверный формат. Введите целое число: ");
-            scan.next();
-        }
-    }
-
     public static void main(String[] args) {
         int row, col;
         int dir;
         int count = 0, k = 0, l = 0;
+        boolean loop = true;
 
-        do {
-            System.out.print("Введите количество строк матрицы (не меньше 2): ");
-            foolProtect();
-            row = scan.nextInt();
-            System.out.print("Введите количество столбцов матрицы (не меньше 2): ");
-            foolProtect();
-            col = scan.nextInt();
-            System.out.print("\nУкажите направление витков спирали.\n1 – по часовой стрелке / 2 – против часовой): ");
-            foolProtect();
-            dir = scan.nextInt();
-        } while (row < 2 || col < 2 || dir < 1 || dir > 2);
+        while (loop) {
+            try {
+                System.out.print("Введите количество строк матрицы (не меньше 2): ");
+                row = scan.nextInt();
+                System.out.print("Введите количество столбцов матрицы (не меньше 2): ");
+                col = scan.nextInt();
+                System.out.print("\nУкажите направление витков спирали.\n1 – по часовой стрелке / 2 – против часовой): ");
+                dir = scan.nextInt();
 
-        int lastRow = row - 1;
-        int lastCol = col - 1;
-        int[][] mas = new int[row][col];
+                if (row > 2 || col > 2 && dir == 1 || dir == 2) {
+                    int lastRow = row - 1;
+                    int lastCol = col - 1;
+                    int[][] mas = new int[row][col];
 
-        if (dir == 1) {
-            fillHelixC(lastCol, lastRow, count, k, l, mas);
-            printHelix(col, row, dir, mas);
-        } else {
-            fillHelixCC(lastCol, lastRow, count, k, l, mas);
-            printHelix(col, row, dir, mas);
+                    if (dir == 1) {
+                        fillHelixC(lastCol, lastRow, count, k, l, mas);
+                        printHelix(col, row, dir, mas);
+                    } else {
+                        fillHelixCC(lastCol, lastRow, count, k, l, mas);
+                        printHelix(col, row, dir, mas);
+                    }
+                    loop = false;
+                } else {
+                    System.out.println("Неверный диапазон.\n");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Неверный формат.\n");
+                scan.next();
+            }
         }
         scan.close();
     }
