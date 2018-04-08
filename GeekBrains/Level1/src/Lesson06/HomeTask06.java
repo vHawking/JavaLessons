@@ -46,7 +46,7 @@ public class HomeTask06 {
     public static void main(String[] args) {
         Cat cat1 = new Cat("Барсик", 200, 1.51, false);
         Cat cat2 = new Cat("Васька", 195, 1.72,false);
-        Dog dog1 = new Dog("Ральфик", 455, 0.54, true);
+        Dog dog1 = new Dog("Ральф", 455, 0.54, true);
         Dog dog2 = new Dog("Алый", 500, 0.75, true);
 
         Animal[] myPets = new Animal[] {cat1, cat2, dog1, dog2};
