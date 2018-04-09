@@ -68,7 +68,7 @@ public class HomeTask03GuessNumber {
                 } else {
                     System.out.printf("У вас не осталось попыток. Было загадано число %d.\nВы проиграли.\n\n", cpuNum);
                 }
-            } catch (InputMismatchException e) {
+            } catch (InputMismatchException ex) {
                 scanner.next();
             }
         }
@@ -85,17 +85,15 @@ public class HomeTask03GuessNumber {
         System.out.print("Хотите поиграть снова?\n1 – Да / 0 - Выход из программы: ");
         while (true) {
             try {
-
                 exit = scanner.nextInt();
                 if (exit < 0 || exit > 1) {
                     System.out.print("Введите 1 или 0: ");
-                    System.out.println();
                 } else {
                     System.out.println();
                     return exit != 0;
                 }
             } catch (InputMismatchException ex) {
-                //System.out.print("Ошибка! Попробуйте снова: ");
+                System.out.print("Ошибка! Попробуйте снова: ");
                 scanner.next();
             }
         }
