@@ -81,17 +81,14 @@ public class HomeTask03GuessNumber {
 
     private static boolean exitGame() {
         int exit;
-        boolean loop = true;
 
         System.out.print("Хотите снова поиграть?\n1 – Да / 0 - Выход из программы: ");
-        while (loop) {
+        while (true) {
             try {
                 exit = scanner.nextInt();
                 if (exit < 0 || exit > 1) {
-                    loop = true;
-                    System.out.println("1 или 0: ");
+                    System.out.print("1 или 0: ");
                 } else {
-                    loop = false;
                     System.out.println();
                     return exit != 0;
                 }
@@ -99,7 +96,6 @@ public class HomeTask03GuessNumber {
                 scanner.next();
             }
         }
-        return false;
     }
 
 /*
