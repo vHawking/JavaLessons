@@ -53,9 +53,9 @@ public class HomeTask03GuessNumber {
             try {
                 int userNum = scanner.nextInt();
                 if (userNum < cpuNum) {
-                    System.out.println("Ваше число меньше загаданного компьютером.");
+                    System.out.print((tryTimes != 1) ? "Ваше число меньше загаданного.\n" : "У вас не осталось попыток.\n");
                 } else if (userNum > cpuNum) {
-                    System.out.println("Ваше число больше загаданного компьютером.");
+                    System.out.print((tryTimes != 1) ? "Ваше число больше загаданного.\n" : "У вас не осталось попыток.\n");
                 } else {
                     System.out.println("Поздравляем! Вы угадали число!\n");
                     break;
@@ -66,7 +66,7 @@ public class HomeTask03GuessNumber {
                     String tries = triesCount(tryTimes);
                     System.out.printf("Остал%cсь %d %s.\n\n", (tries.equals("попытка")) ? 'а' : 'о', tryTimes, tries);
                 } else {
-                    System.out.printf("У вас не осталось попыток. Было загадано число %d.\nВы проиграли.\n\n", cpuNum);
+                    System.out.printf("Было загадано число %d.\nВы проиграли.\n\n", cpuNum);
                 }
             } catch (InputMismatchException ex) {
                 scanner.next();
