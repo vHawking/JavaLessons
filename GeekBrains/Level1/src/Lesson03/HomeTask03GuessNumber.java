@@ -85,14 +85,17 @@ public class HomeTask03GuessNumber {
         System.out.print("Хотите поиграть снова?\n1 – Да / 0 - Выход из программы: ");
         while (true) {
             try {
+
                 exit = scanner.nextInt();
                 if (exit < 0 || exit > 1) {
                     System.out.print("Введите 1 или 0: ");
+                    System.out.println();
                 } else {
                     System.out.println();
                     return exit != 0;
                 }
-            } catch (InputMismatchException e) {
+            } catch (InputMismatchException ex) {
+                //System.out.print("Ошибка! Попробуйте снова: ");
                 scanner.next();
             }
         }
