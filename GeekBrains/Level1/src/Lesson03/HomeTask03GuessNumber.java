@@ -83,32 +83,23 @@ public class HomeTask03GuessNumber {
         int exit;
         boolean loop = true;
 
+        System.out.print("Хотите снова поиграть?\n1 – Да / 0 - Выход из программы: ");
         while (loop) {
             try {
-                System.out.print("Хотите снова поиграть?\n1 – Да / 0 - Выход из программы: ");
                 exit = scanner.nextInt();
-                if (exit == 1) {
+                if (exit < 0 || exit > 1) {
+                    loop = true;
+                    System.out.println("1 или 0: ");
+                } else {
                     loop = false;
-                    return true;
-                    break;
+                    System.out.println();
+                    return exit != 0;
                 }
-                System.out.println();
-                return exit != 0;
             } catch (InputMismatchException e) {
                 scanner.next();
             }
         }
-
-//        while (true) {
-//            try {
-//                System.out.print("Хотите снова поиграть?\n1 – Да / 0 - Выход из программы: ");
-//                exit = scanner.nextInt();
-//                System.out.println();
-//                return exit != 0;
-//            } catch (InputMismatchException e) {
-//                scanner.next();
-//            }
-//        }
+        return false;
     }
 
 /*
