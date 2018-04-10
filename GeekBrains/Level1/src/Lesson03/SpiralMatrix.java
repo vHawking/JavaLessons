@@ -119,7 +119,7 @@ public class SpiralMatrix {
                 }
                 System.out.println("Неверный диапазон значений размера матрицы.\n");
             } catch (InputMismatchException ex) {
-                System.out.println("Ошибка! Некорректный формат.\n");
+                System.out.println("Ошибка! Некорректный формат данных.\n");
                 scan.next();
             }
         }
