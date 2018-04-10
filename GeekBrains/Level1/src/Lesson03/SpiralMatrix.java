@@ -19,9 +19,9 @@ public class SpiralMatrix {
     private static int l = 0;
     private static Scanner scan = new Scanner(System.in);
 
-/*
- *  Метод заполняет матрицу по спирали по часовой стрелке.
- */
+    /*
+     *  Метод заполняет матрицу по спирали по часовой стрелке.
+     */
 
     private static void fillHelixC(int lastRow, int lastCol, int[][] mas) {
         while (k <= lastRow && l <= lastCol) {
@@ -50,9 +50,9 @@ public class SpiralMatrix {
         }
     }
 
-/*
- *  Метод заполняет матрицу по спирали против часовой стрелки.
- */
+    /*
+     *  Метод заполняет матрицу по спирали против часовой стрелки.
+     */
 
     private static void fillHelixCC(int lastRow, int lastCol, int[][] mas) {
         while (k <= lastRow && l <= lastCol) {
@@ -81,9 +81,9 @@ public class SpiralMatrix {
         }
     }
 
-/*
- *  Метод выводит в консоль заполненную по спирали матрицу.
- */
+    /*
+     *  Метод выводит в консоль заполненную по спирали матрицу.
+     */
 
     private static void printHelix(int row, int col, int dir, int[][] mas) {
         System.out.printf("\nМатрица заполнена по спирали %s", (dir == 1) ? "по часовой стрелке.\n\n" : "против " +
@@ -106,35 +106,47 @@ public class SpiralMatrix {
     public static void main(String[] args) {
         int row, col;
         int dir;
-        boolean loop = true;
 
-        while (loop) {
+        while (true) {
             try {
                 System.out.print("Введите количество строк матрицы (не меньше 2): ");
                 row = scan.nextInt();
                 System.out.print("Введите количество столбцов матрицы (не меньше 2): ");
                 col = scan.nextInt();
-                System.out.print("\nУкажите направление витков спирали.\n1 – по часовой стрелке / 2 – против часовой: ");
+
+                if (row >= 2 && col >= 2) {
+                    System.out.println();
+                    break;
+                }
+                System.out.println("Неверный диапазон значений размера матрицы.\n");
+            } catch (InputMismatchException ex) {
+                System.out.println("Ошибка! Некорректный формат.\n");
+                scan.next();
+            }
+        }
+
+        while (true) {
+            try {
+                System.out.print("Укажите направление витков спирали.\n1 – по часовой стрелке / 2 – против часовой: ");
                 dir = scan.nextInt();
 
-                if (row > 2 || col > 2 && dir == 1 || dir == 2) {
-                    int[][] mas = new int[row][col];
-                    int lastRow = row - 1;
-                    int lastCol = col - 1;
+                int[][] mas = new int[row][col];
+                int lastRow = row - 1;
+                int lastCol = col - 1;
 
-                    if (dir == 1) {
-                        fillHelixC(lastRow, lastCol, mas);
-                        printHelix(row, col, dir, mas);
-                    } else {
-                        fillHelixCC(lastRow, lastCol, mas);
-                        printHelix(row, col, dir, mas);
-                    }
-                    loop = false;
+                if (dir == 1) {
+                    fillHelixC(lastRow, lastCol, mas);
+                    printHelix(row, col, dir, mas);
+                    break;
+                } else if (dir == 2) {
+                    fillHelixCC(lastRow, lastCol, mas);
+                    printHelix(row, col, dir, mas);
+                    break;
                 } else {
-                    System.out.println("Неверный диапазон.\n");
+                    System.out.println("Неверное значение направления.\n");
                 }
-            } catch (InputMismatchException e) {
-                System.out.println("Неверный формат.\n");
+            } catch (InputMismatchException ex) {
+                System.out.println("Ошибка! Некорректный формат.\n");
                 scan.next();
             }
         }
