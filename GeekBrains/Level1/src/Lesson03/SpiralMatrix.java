@@ -142,7 +142,7 @@ public class SpiralMatrix {
                     printHelix(row, col, dir, mas);
                     break;
                 } else {
-                    System.out.println("Неверное значение направления.\n");
+                    System.out.println("Неверное значение выбора направления.\n");
                 }
             } catch (InputMismatchException ex) {
                 System.out.println("Ошибка! Некорректный формат.\n");
