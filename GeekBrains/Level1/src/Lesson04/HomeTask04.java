@@ -1,5 +1,6 @@
 package Lesson04;
 
+import java.lang.reflect.Array;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -125,13 +126,12 @@ public class HomeTask04 {
             try {
                 System.out.print("\nВаш ход (a1, b2, c3 и т.д.): ");
                 String playerStep = scan.nextLine().toLowerCase();
-                char[] coord = playerStep.toCharArray();
-                y = colToInt(coord[0]);
-                x = rowToInt(coord[1]);
+                y = colToInt(playerStep.charAt(0));
+                x = rowToInt(playerStep.charAt(1));
                 loop = isCellValid(y, x);
                 setSymbol(y, x, PLAYER_DOT);
-            } catch (ArrayIndexOutOfBoundsException ex) {
-                System.out.println("Неверное значение для хода.");
+            } catch (IndexOutOfBoundsException ex) {
+                System.out.println("Некорректная последовательность символов.");
             }
         }
     }
