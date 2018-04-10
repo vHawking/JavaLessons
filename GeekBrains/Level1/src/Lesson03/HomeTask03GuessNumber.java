@@ -21,10 +21,10 @@ public class HomeTask03GuessNumber {
     private static final int tryNumbers = 3;
     private static Scanner scanner = new Scanner(System.in);
 
-/*
+    /*
      Метод triesCount() позволяет программе общаться с пользователем по-человечески на русском языке и склонять
      слово «попытка» в зависимости его числового количества и значения.
-*/
+     */
 
     private static String triesCount(int tryTimes) {
         int t1;
@@ -41,10 +41,11 @@ public class HomeTask03GuessNumber {
         }
     }
 
-/*
+    /*
      Метод guessNumber() состоит из цикла while() и выполняется столько раз, сколько задано попыток угадать число
      в переменной tryNumbers. По-умолчанию это значение равно 3.
-*/
+     */
+
     private static void guessNumber(int cpuNum) {
         int tryTimes = tryNumbers;
 
@@ -52,21 +53,21 @@ public class HomeTask03GuessNumber {
             System.out.printf("Введите число от %d до %d: ", minRange, maxRange);
             try {
                 int userNum = scanner.nextInt();
-                if (userNum < cpuNum) {
-                    System.out.print((tryTimes != 1) ? "Ваше число меньше загаданного.\n" : "У вас не осталось попыток.\n");
-                } else if (userNum > cpuNum) {
-                    System.out.print((tryTimes != 1) ? "Ваше число больше загаданного.\n" : "У вас не осталось попыток.\n");
-                } else {
+                if (userNum < cpuNum && tryTimes != 1) {
+                    System.out.print("Ваше число меньше загаданного.\n");
+                } else if (userNum > cpuNum && tryTimes != 1) {
+                    System.out.print("Ваше число больше загаданного.\n");
+                } else if (userNum == cpuNum) {
                     System.out.println("Поздравляем! Вы угадали число!\n");
                     break;
                 }
-            tryTimes--;
+                tryTimes--;
 
                 if (tryTimes > 0) {
                     String tries = triesCount(tryTimes);
                     System.out.printf("Остал%cсь %d %s.\n\n", (tries.equals("попытка")) ? 'а' : 'о', tryTimes, tries);
                 } else {
-                    System.out.printf("Было загадано число %d.\nВы проиграли.\n\n", cpuNum);
+                    System.out.printf("У вас не осталось попыток. Было загадано число %d.\nВы проиграли.\n\n", cpuNum);
                 }
             } catch (InputMismatchException ex) {
                 scanner.next();
@@ -74,10 +75,10 @@ public class HomeTask03GuessNumber {
         }
     }
 
-/*
+    /*
     Метод exitGame() возвращает 0 в цикл do-while для выхода из основного цикла программы, или 1 для продолжения.
     Другие значения метод игнорирует и просит ввести либо 0, либо 1.
-*/
+    */
 
     private static boolean exitGame() {
         int exit;
@@ -99,10 +100,10 @@ public class HomeTask03GuessNumber {
         }
     }
 
-/*
+    /*
     Цикл do-while в методе main служит для того, чтобы у пользователя была позможность выбора: продолжить игру,
     или выйти после того, как игрок исчерпает количество попыток угадать число.
-*/
+    */
 
     public static void main(String[] args) {
         do {
