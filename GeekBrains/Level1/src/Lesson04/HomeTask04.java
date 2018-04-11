@@ -1,6 +1,5 @@
 package Lesson04;
 
-import java.lang.reflect.Array;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -77,9 +76,6 @@ public class HomeTask04 {
     // 6. Установка символа на поле
 
     private static void setSymbol(int y, int x, char symbol) {
-        if (field[y][x] != EMPTY_DOT) {
-            System.out.println("На эту клетку ход невозможен.");
-        }
         field[y][x] = symbol;
     }
 
@@ -129,7 +125,11 @@ public class HomeTask04 {
                 y = colToInt(playerStep.charAt(0));
                 x = rowToInt(playerStep.charAt(1));
                 loop = isCellValid(y, x);
-                setSymbol(y, x, PLAYER_DOT);
+                if (field[y][x] != EMPTY_DOT) {
+                    System.out.println("На эту клетку ход невозможен.");
+                } else {
+                    setSymbol(y, x, PLAYER_DOT);
+                }
             } catch (IndexOutOfBoundsException ex) {
                 System.out.println("Некорректная последовательность символов.");
             }
