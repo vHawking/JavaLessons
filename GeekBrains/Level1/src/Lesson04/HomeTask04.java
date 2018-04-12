@@ -131,7 +131,7 @@ public class HomeTask04 {
                     setSymbol(y, x, PLAYER_DOT);
                 }
             } catch (IndexOutOfBoundsException ex) {
-                System.out.println("Некорректная последовательность символов.");
+                System.out.println("Ошибка! Некорректные данные для хода.");
             }
         }
     }
