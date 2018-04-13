@@ -145,7 +145,7 @@ public class SpiralMatrix {
                     System.out.println("Неверное значение выбора направления.\n");
                 }
             } catch (InputMismatchException ex) {
-                System.out.println("Ошибка! Некорректный формат.\n");
+                System.out.println("Ошибка! Некорректный формат данных.\n");
                 scan.next();
             }
         }
