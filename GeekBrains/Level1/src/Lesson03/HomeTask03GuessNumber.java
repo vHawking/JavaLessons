@@ -69,6 +69,7 @@ public class HomeTask03GuessNumber {
                     System.out.printf("У вас не осталось попыток. Было загадано число %d.\nВы проиграли.\n\n", cpuNum);
                 }
             } catch (InputMismatchException ex) {
+                System.out.println("Ошибка! Некорректный формат данных.\n");
                 scanner.next();
             }
         }
