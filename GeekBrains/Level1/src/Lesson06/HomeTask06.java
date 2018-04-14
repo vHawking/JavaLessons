@@ -23,7 +23,7 @@ class Animal {
 }
 
 class Cat extends Animal {
-    public Cat(String name, int run, double jump, boolean swim) {
+    Cat(String name, int run, double jump, boolean swim) {
         this.name = name;
         this.run = run;
         this.jump = jump;
@@ -32,7 +32,7 @@ class Cat extends Animal {
 }
 
 class Dog extends Animal {
-    public Dog(String name, int run, double jump, boolean swim) {
+    Dog(String name, int run, double jump, boolean swim) {
         this.name = name;
         this.run = run;
         this.jump = jump;
