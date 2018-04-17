@@ -1,7 +1,5 @@
 package Lesson05;
 
-import static Lesson05.Staff.ifAgeOver40;
-
 /**
  * Java. Уровень1. Домашнее задание по 5 лекции.
  * Создать класс "Сотрудник" с полями: ФИО, должность, email, телефон, зарплата, возраст.
@@ -23,19 +21,22 @@ public class HomeTask05 {
     public static void main(String[] args) {
 
         Staff[] person = new Staff[5];
-        person[0] = new Staff("Иванов Иван", "директор", "ivivan@mailbox.com", "+7923123125",
-                130000,49);
-        person[1] = new Staff("Петров Пётр", "заместитель директора", "petrov@gmail.com", "+79281234545",
-                120000,47);
-        person[2] = new Staff("Васильев Василий", "главный конструктор", "vasyalol@yandex.ru", "+79259875635",
-                115000,42);
-        person[3] = new Staff("Юрьев Юрий", "программист", "jurassic@mail.ru", "+79181073722",
-                110000,30);
-        person[4] = new Staff("Александров Александр", "охранник", "topgun@minbox.ru", "+79291274606",
-                35000,35);
+        person[0] = new Staff("Иванов Иван", "директор",
+                "ivivan@mailbox.com", "+7923123125", 130000,49);
+        person[1] = new Staff("Петров Пётр","заместитель директора",
+                "petrov@gmail.com", "+79281234545", 120000,47);
+        person[2] = new Staff("Васильев Василий", "архитектор ПО",
+                "vasyalol@yandex.ru", "+79259875635", 115000,42);
+        person[3] = new Staff("Юрьев Юрий",  "программист",
+                "jurassic@mail.ru",  "+79181073722", 110000,30);
+        person[4] = new Staff("Александров Александр", "охранник",
+                "topgun@minbox.ru", "+79291274606", 35000,35);
 
-        System.out.println();
-        ifAgeOver40(person);
+        for(Staff persons : person) {
+            if (persons.getAge() > 40) {
+                System.out.println(persons);
+            }
+        }
     }
 }
 
@@ -58,18 +59,17 @@ class Staff {
 
     }
 
-    static void ifAgeOver40(Staff[] persons) {
-        for (int i = 0; i < persons.length; i++) {
-            Staff person = persons[i];
-
-            if (person.age > 40) {
-                System.out.println(person.personResult());
-            }
-        }
+    public int getAge() {
+        return age;
     }
 
-    private String personResult() {
-        return "Фамилия имя: " + name + "; должность: " + position + "; e-mail: " + email + "; телефон: " + phone +
-                "; оклад: " + salary + " руб.; возраст: " + age + ".";
+    @Override
+    public String toString() {
+        return name +
+                "\n| Должность: " + position +
+                "\n| E-mail: " + email +
+                "\n| Телефон: " + phone +
+                "\n| Оклад: " + salary +
+                "\n| Возраст: " + age + "\n";
     }
 }
