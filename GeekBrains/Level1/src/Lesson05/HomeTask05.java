@@ -32,9 +32,9 @@ public class HomeTask05 {
         person[4] = new Staff("Александров Александр", "охранник",
                 "topgun@minbox.ru", "+79291274606", 35000,35);
 
-        for(Staff persons : person) {
+        for (Staff persons : person) {
             if (persons.getAge() > 40) {
-                System.out.println(persons);
+                System.out.println(persons.toString());
             }
         }
     }
@@ -70,6 +70,6 @@ class Staff {
                 "\n| E-mail: " + email +
                 "\n| Телефон: " + phone +
                 "\n| Оклад: " + salary +
-                "\n| Возраст: " + age + "\n";
+                "\n| Возраст: " + age;
     }
 }
