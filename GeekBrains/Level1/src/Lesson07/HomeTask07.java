@@ -84,7 +84,9 @@ public class HomeTask07 {
         }
 
         void addFood() {
-            System.out.printf("\nДобавляем еду в тарелку >>> %d%%.\n", this.food += 50);
+            int add = 50;
+            System.out.printf("\nДобавляем еду в тарелку >>> %d%%.\n", add);
+            food += add;
         }
     }
 }
