@@ -19,26 +19,6 @@ package Lesson07;
 
 public class HomeTask07 {
 
-    public static void main(String[] args) {
-        Cat[] cats = {
-                new Cat("Барсик", 35),
-                new Cat("Васька", 20),
-                new Cat("Мурзик", 15),
-                new Cat("Пушок", 40),
-        };
-
-        System.out.println("Коты хотят покушать и просят насыпать им корм.");
-        Plate p = new Plate(80);
-
-        for (Cat cat : cats) {
-            p.info();
-            cat.eat(p);
-            cat.info();
-        }
-        p.addFood();
-        p.info();
-    }
-
     static class Cat {
         private String name;
         private int appetite;
@@ -89,4 +69,26 @@ public class HomeTask07 {
             food += add;
         }
     }
+
+    public static void main(String[] args) {
+        Cat[] cats = {
+                new Cat("Барсик", 35),
+                new Cat("Васька", 20),
+                new Cat("Мурзик", 15),
+                new Cat("Пушок", 40),
+        };
+
+        System.out.println("Коты хотят покушать и просят насыпать им корм.");
+        Plate p = new Plate(80);
+
+        for (Cat cat : cats) {
+            p.info();
+            cat.eat(p);
+            cat.info();
+        }
+        p.addFood();
+        p.info();
+    }
+
+
 }
