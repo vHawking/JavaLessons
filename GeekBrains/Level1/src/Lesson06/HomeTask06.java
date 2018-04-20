@@ -95,34 +95,45 @@ class Cat extends Animal {
 public class HomeTask06 {
     public static void main(String[] args) {
         Cat cat1 = new Cat("Барсик", 200, 1.51f, 1);
-        Cat cat2 = new Cat("Васька", 195, 1.72f, 1);
+        Cat cat2 = new Cat("Пушок", 195, 1.72f, 1);
         Dog dog1 = new Dog("Ральф", 455, 0.54f, 10);
         Dog dog2 = new Dog("Алый", 500, 0.75f, 10);
 
         Animal[] myPets = new Animal[]{cat1, cat2, dog1, dog2};
 
-        float toJump = 1.5f;
         float toRun = 350;
+        float toJump = 1.5f;
         float toSwim = 5;
 
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++");
+        System.out.println("+  Чемпионат мира по триатлону среди живортных  +");
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++");
+        System.out.printf("Марафон: %.1f м. Прыжки: %.1f м. Плавание: %.1f м.\n", toRun, toJump, toSwim);
+
         for (int i = 0; i < myPets.length; i++) {
-            String nameString = myPets[i].getType() + " " + myPets[i].getName() + " может ";
+            String eventResult;
+            String eventScore;
+            String nameString = "\n" + myPets[i].getType() + " " + myPets[i].getName() + ": ";
 
-            String eventName = String.format("прыгнуть на %.2f м. Норматив составляет ", myPets[i].getJump());
-            String eventResult = (myPets[i].jump(toJump)) ? "Зачёт" : "Незачёт";
-            System.out.println(nameString + eventName + toJump + " м. " + eventResult + ".");
+            System.out.println(nameString);
 
-            eventName = String.format("пробежать %.2f м. Норматив составляет ", myPets[i].getRun());
-            eventResult = myPets[i].run(toRun) ? "Зачёт" : "Незачёт";
-            System.out.println(nameString + eventName + toRun + " м. " + eventResult + ".");
+            eventResult = String.format("%.2f м. ", myPets[i].getRun());
+            eventScore = myPets[i].run(toRun) ? "Зачёт" : "Незачёт";
+            System.out.print("| Марафон: ");
+            System.out.println(eventResult + "Норматив: " + toRun + " м. " + eventScore + ".");
+
+            eventResult = String.format("%.2f м. ", myPets[i].getJump());
+            eventScore = (myPets[i].jump(toJump)) ? "Зачёт" : "Незачёт";
+            System.out.print("| Прыжок: ");
+            System.out.println(eventResult + "Норматив: " + toJump + " м. " + eventScore + ".");
 
             int swimResult = myPets[i].swim(toSwim);
-            eventName = String.format("проплыть %.2f м. Норматив составляет ", myPets[i].getSwim());
-            eventResult = (swimResult == Animal.SWIM_YES) ? "Зачёт" : "Незачёт";
-            if (swimResult == Animal.SWIM_FAIL) {
-                eventResult = "Коты не любят воду и не плавают";
-            }
-            System.out.println(nameString + eventName + toSwim + " м. " + eventResult + ".");
+            eventResult = String.format("%.2f м. ", myPets[i].getSwim());
+            eventScore = (swimResult == Animal.SWIM_YES) ? "Зачёт" : "Незачёт";
+            System.out.print("| Плавание: ");
+            System.out.println((swimResult == Animal.SWIM_FAIL)? "Коты боятся воды и не плавают." :
+                    eventResult + "Норматив: " + toSwim + " м. " + eventScore + ".");
+
         }
     }
 }
