@@ -17,59 +17,71 @@ package Lesson07;
  * @version 18 Февраля 2018 г.
  */
 
+class Cat {
+
+    private String name;
+    private int appetite;
+    private boolean satiety;
+
+    Cat(String name, int appetite) {
+        this.name = name;
+        this.appetite = appetite;
+        this.satiety = true;
+    }
+
+    private String getName() {
+        return name;
+    }
+
+    private int getAppetite() {
+        return appetite;
+    }
+
+    private boolean isSatiety() {
+        return satiety;
+    }
+
+    void info() {
+        System.out.printf("\nКот %s имеет аппетит %d%% и подходит к тарелке с едой.\n", getName(), getAppetite());
+        System.out.printf("Кот %s %s", getName(), !isSatiety() ?
+                "хорошо покушал. И благодарит вас.\n" : "не ест из тарелки, где мало еды. Мяу!\n");
+    }
+
+    void eat(Plate p) {
+        if (isSatiety() && p.decreaseFood(getAppetite())) {
+            satiety = false;
+        }
+    }
+}
+
+class Plate {
+    private int food;
+
+    Plate(int food) {
+        this.food = food;
+    }
+
+    public boolean decreaseFood(int x) {
+        int delta = food - x;
+        if (delta < 0) {
+            return false;
+        }
+        food -= x;
+        return true;
+    }
+
+    void info() {
+        System.out.printf("Тарелка наполнена едой на %d%%.\n", food);
+    }
+
+    void addFood() {
+        int add = 50;
+        System.out.printf("\nДобавляем еду в тарелку >>> %d%%.\n", add);
+        food += add;
+    }
+}
+
 public class HomeTask07 {
-
-    static class Cat {
-        private String name;
-        private int appetite;
-        private boolean satiety;
-
-        Cat(String name, int appetite) {
-            this.name = name;
-            this.appetite = appetite;
-            this.satiety = true;
-        }
-
-        void info() {
-            System.out.printf("\nКот %s имеет аппетит %d%% и подходит к тарелке с едой.\n", name, appetite);
-            System.out.printf("Кот %s %s", name, !satiety ?
-                    "хорошо покушал. И благодарит вас.\n" : "не ест из тарелки, где мало еды. Мяу!\n");
-        }
-
-        void eat(Plate p) {
-            if (satiety && p.decreaseFood(appetite)) {
-                satiety = false;
-            }
-        }
-    }
-
-    static class Plate {
-        private int food;
-
-        Plate(int food) {
-            this.food = food;
-        }
-
-        public boolean decreaseFood(int x) {
-            int delta = food - x;
-            if (delta < 0) {
-                return false;
-            }
-            food -= x;
-            return true;
-        }
-
-        void info() {
-            System.out.printf("Тарелка наполнена едой на %d%%.\n", food);
-        }
-
-        void addFood() {
-            int add = 50;
-            System.out.printf("\nДобавляем еду в тарелку >>> %d%%.\n", add);
-            food += add;
-        }
-    }
-
     public static void main(String[] args) {
         Cat[] cats = {
                 new Cat("Барсик", 35),
@@ -89,6 +101,4 @@ public class HomeTask07 {
         p.addFood();
         p.info();
     }
-
-
 }
