@@ -41,7 +41,7 @@ class Animal {
         this.swim = swim + swimDiff;
     }
 
-    public static int getSwimNo() {
+    private static int getSwimNo() {
         return SWIM_NO;
     }
 
