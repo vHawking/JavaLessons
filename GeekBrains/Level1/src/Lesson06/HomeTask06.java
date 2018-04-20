@@ -110,30 +110,29 @@ public class HomeTask06 {
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++");
         System.out.printf("Марафон: %.1f м. Прыжки: %.1f м. Плавание: %.1f м.\n", toRun, toJump, toSwim);
 
-        for (int i = 0; i < myPets.length; i++) {
+        for (Animal myPet : myPets) {
             String eventResult;
             String eventScore;
-            String nameString = "\n" + myPets[i].getType() + " " + myPets[i].getName() + ": ";
+            String nameString = "\n" + myPet.getType() + " " + myPet.getName() + ": ";
 
             System.out.println(nameString);
-
-            eventResult = String.format("%.2f м. ", myPets[i].getRun());
-            eventScore = myPets[i].run(toRun) ? "Зачёт" : "Незачёт";
+            
+            eventResult = String.format("%.2f м. ", myPet.getRun());
+            eventScore = myPet.run(toRun) ? "Зачёт" : "Незачёт";
             System.out.print("| Марафон: ");
             System.out.println(eventResult + "Норматив: " + toRun + " м. " + eventScore + ".");
 
-            eventResult = String.format("%.2f м. ", myPets[i].getJump());
-            eventScore = (myPets[i].jump(toJump)) ? "Зачёт" : "Незачёт";
+            eventResult = String.format("%.2f м. ", myPet.getJump());
+            eventScore = (myPet.jump(toJump)) ? "Зачёт" : "Незачёт";
             System.out.print("| Прыжок: ");
             System.out.println(eventResult + "Норматив: " + toJump + " м. " + eventScore + ".");
 
-            int swimResult = myPets[i].swim(toSwim);
-            eventResult = String.format("%.2f м. ", myPets[i].getSwim());
+            int swimResult = myPet.swim(toSwim);
+            eventResult = String.format("%.2f м. ", myPet.getSwim());
             eventScore = (swimResult == Animal.SWIM_YES) ? "Зачёт" : "Незачёт";
             System.out.print("| Плавание: ");
-            System.out.println((swimResult == Animal.SWIM_FAIL)? "Коты боятся воды и не плавают." :
+            System.out.println((swimResult == Animal.SWIM_FAIL) ? "Коты боятся воды и не плавают." :
                     eventResult + "Норматив: " + toSwim + " м. " + eventScore + ".");
-
         }
     }
 }
