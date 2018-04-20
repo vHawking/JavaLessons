@@ -116,7 +116,7 @@ public class HomeTask06 {
             String nameString = "\n" + myPet.getType() + " " + myPet.getName() + ": ";
 
             System.out.println(nameString);
-            
+
             eventResult = String.format("%.2f м. ", myPet.getRun());
             eventScore = myPet.run(toRun) ? "Зачёт" : "Незачёт";
             System.out.print("| Марафон: ");
