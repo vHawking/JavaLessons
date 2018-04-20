@@ -19,8 +19,8 @@ import java.util.Random;
 
 class Animal {
     private static final int SWIM_NO = 0;
-    static final int SWIM_YES = 1;
-    static final int SWIM_FAIL = -1;
+    private static final int SWIM_YES = 1;
+    private static final int SWIM_FAIL = -1;
 
     private String type;
     private String name;
@@ -39,6 +39,18 @@ class Animal {
         this.run = run + runDiff;
         this.jump = jump + jumpDiff;
         this.swim = swim + swimDiff;
+    }
+
+    public static int getSwimNo() {
+        return SWIM_NO;
+    }
+
+    public static int getSwimYes() {
+        return SWIM_YES;
+    }
+
+    public static int getSwimFail() {
+        return SWIM_FAIL;
     }
 
     public String getType() {
@@ -70,7 +82,7 @@ class Animal {
     }
 
     protected int swim(float distance) {
-        return (distance < swim) ? SWIM_YES : SWIM_NO;
+        return (distance < swim) ? getSwimYes() : getSwimNo();
     }
 }
 
@@ -88,7 +100,7 @@ class Cat extends Animal {
 
     @Override
     protected int swim(float distance) {
-        return Animal.SWIM_FAIL;
+        return Animal.getSwimFail();
     }
 }
 
@@ -129,9 +141,9 @@ public class HomeTask06 {
 
             int swimResult = myPet.swim(toSwim);
             eventResult = String.format("%.2f м. ", myPet.getSwim());
-            eventScore = (swimResult == Animal.SWIM_YES) ? "Зачёт" : "Незачёт";
+            eventScore = (swimResult == Animal.getSwimYes()) ? "Зачёт" : "Незачёт";
             System.out.print("| Плавание: ");
-            System.out.println((swimResult == Animal.SWIM_FAIL) ? "Коты боятся воды и не плавают." :
+            System.out.println((swimResult == Animal.getSwimFail()) ? "Коты боятся воды и не плавают." :
                     eventResult + "Норматив: " + toSwim + " м. " + eventScore + ".");
         }
     }
