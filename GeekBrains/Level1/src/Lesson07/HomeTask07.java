@@ -18,7 +18,6 @@ package Lesson07;
  */
 
 class Cat {
-
     private String name;
     private int appetite;
     private boolean satiety;
@@ -74,7 +73,7 @@ class Plate {
         System.out.printf("\nТарелка наполнена едой на %d%%.", food);
     }
 
-    void addFood(int add) {
+    public void addFood(int add) {
         System.out.printf("\nДобавляем еду в тарелку >>> %d%%.", add);
         food += add;
     }
@@ -99,5 +98,6 @@ public class HomeTask07 {
         }
         p.addFood(50);
         p.info();
+        System.out.println();
     }
 }
