@@ -26,7 +26,7 @@ class Cat {
     Cat(String name, int appetite) {
         this.name = name;
         this.appetite = appetite;
-        this.satiety = true;
+        satiety = false;
     }
 
     private String getName() {
@@ -43,13 +43,13 @@ class Cat {
 
     void info() {
         System.out.printf("\nКот %s имеет аппетит %d%% и подходит к тарелке с едой.\n", getName(), getAppetite());
-        System.out.printf("Кот %s %s", getName(), !isSatiety() ?
-                "хорошо покушал. И благодарит вас.\n" : "не ест из тарелки, где мало еды. Мяу!\n");
+        System.out.printf("Кот %s %s", getName(), isSatiety() ?
+                "хорошо покушал и благодарит вас.\n" : "не ест из тарелки, где мало еды. Мяу!\n");
     }
 
     void eat(Plate p) {
-        if (isSatiety() && p.decreaseFood(getAppetite())) {
-            satiety = false;
+        if (!isSatiety() && p.decreaseFood(getAppetite())) {
+            satiety = true;
         }
     }
 }
@@ -71,12 +71,11 @@ class Plate {
     }
 
     void info() {
-        System.out.printf("Тарелка наполнена едой на %d%%.\n", food);
+        System.out.printf("\nТарелка наполнена едой на %d%%.", food);
     }
 
-    void addFood() {
-        int add = 50;
-        System.out.printf("\nДобавляем еду в тарелку >>> %d%%.\n", add);
+    void addFood(int add) {
+        System.out.printf("\nДобавляем еду в тарелку >>> %d%%.", add);
         food += add;
     }
 }
@@ -98,7 +97,7 @@ public class HomeTask07 {
             cat.eat(p);
             cat.info();
         }
-        p.addFood();
+        p.addFood(50);
         p.info();
     }
 }
