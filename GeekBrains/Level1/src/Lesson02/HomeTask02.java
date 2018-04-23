@@ -339,7 +339,7 @@ public class HomeTask02 {
 
         System.out.println("Задание 7****. Вариант 1.\n");
         int[] arrShift1 = {11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
-        int n1 = 4;
+        int n1 = 6;
         arrayShift1(arrShift1, n1);
 
         System.out.println("Задание 7****. Вариант 2.\n");
