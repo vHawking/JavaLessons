@@ -89,15 +89,15 @@ public class HomeTask07 {
         };
 
         System.out.println("Коты хотят покушать и просят насыпать им корм.");
-        Plate p = new Plate(80);
+        Plate plate = new Plate(80);
 
         for (Cat cat : cats) {
-            p.info();
-            cat.eat(p);
+            plate.info();
+            cat.eat(plate);
             cat.info();
         }
-        p.addFood(50);
-        p.info();
+        plate.addFood(50);
+        plate.info();
         System.out.println();
     }
 }
