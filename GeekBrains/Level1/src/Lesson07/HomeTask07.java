@@ -69,7 +69,7 @@ class Plate {
         return true;
     }
 
-    void info() {
+    public void info() {
         System.out.printf("\nТарелка наполнена едой на %d%%.", food);
     }
 
