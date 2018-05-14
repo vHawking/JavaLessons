@@ -19,8 +19,8 @@ import java.util.Random;
 
 class Animal {
     private static final int SWIM_NO = 0;
-    static final int SWIM_YES = 1;
-    static final int SWIM_FAIL = -1;
+    public static final int SWIM_YES = 1;
+    public static final int SWIM_FAIL = -1;
 
     private String type;
     private String name;
