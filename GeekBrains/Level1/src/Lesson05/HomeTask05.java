@@ -1,5 +1,7 @@
 package Lesson05;
 
+import static Lesson05.HomeTask05.isAge;
+
 /**
  * Java. Уровень1. Домашнее задание по 5 лекции.
  * Создать класс "Сотрудник" с полями: ФИО, должность, email, телефон, зарплата, возраст.
@@ -18,22 +20,41 @@ package Lesson05;
  */
 
 public class HomeTask05 {
+
+    static String isAge(int employeeAge) {
+        int a1;
+        int a2;
+        a1 = employeeAge % 10;
+        a2 = employeeAge % 100;
+
+        if (a1 == 1 && a2 != 11) {
+            return "год";
+        } else if (a1 >= 2 && a1 <= 4 && (a2 < 10 || a2 >= 20)) {
+            return "года";
+        } else {
+            return "лет";
+        }
+    }
+
     public static void main(String[] args) {
+        int setAge = 40;
 
         Staff[] person = new Staff[5];
-        person[0] = new Staff("Иванов Иван", "директор",
-                "ivivan@mailbox.com", "+7923123125", 130000,49);
-        person[1] = new Staff("Петров Пётр","заместитель директора",
-                "petrov@gmail.com", "+79281234545", 120000,47);
-        person[2] = new Staff("Васильев Василий", "архитектор ПО",
-                "vasyalol@yandex.ru", "+79259875635", 115000,42);
-        person[3] = new Staff("Юрьев Юрий",  "программист",
-                "jurassic@mail.ru",  "+79181073722", 110000,30);
-        person[4] = new Staff("Александров Александр", "охранник",
-                "topgun@minbox.ru", "+79291274606", 35000,35);
+        person[0] = new Staff("Иванов Иван", "Директор",
+                "ivivan@mailbox.com", "+7 (923) 123-12-75", 130000,49);
+        person[1] = new Staff("Петров Пётр","Заместитель Директора",
+                "petrov@gmail.com", "+7 (928) 123-45-45", 120000,47);
+        person[2] = new Staff("Васильев Василий", "Архитектор ПО",
+                "vasyalol@yandex.ru", "+7 (925) 987-56-35", 115000,42);
+        person[3] = new Staff("Юрьев Юрий",  "Программист",
+                "jurassic@mail.ru",  "+7 (918) 107-37-22", 110000,30);
+        person[4] = new Staff("Александров Александр", "Охранник",
+                "topgun@minbox.ru", "+7 (929) 127-46-06", 35000,35);
 
+        System.out.printf("Список сотрудников с возрастом больше %d %s.\n", setAge, isAge(setAge));
         for (Staff persons : person) {
-            if (persons.getAge() > 40) {
+            if (persons.getAge() > setAge) {
+                System.out.println();
                 System.out.println(persons.toString());
             }
         }
@@ -56,11 +77,14 @@ class Staff {
         this.phone = phone;
         this.salary = salary;
         this.age = age;
-
     }
 
     public int getAge() {
         return age;
+    }
+
+    private String getYears() {
+        return isAge(age);
     }
 
     @Override
@@ -69,7 +93,7 @@ class Staff {
                 "\n| Должность: " + position +
                 "\n| E-mail: " + email +
                 "\n| Телефон: " + phone +
-                "\n| Оклад: " + salary +
-                "\n| Возраст: " + age;
+                "\n| Оклад: " + salary + " руб." +
+                "\n| Возраст: " + age + " " + getYears() + ".";
     }
 }
