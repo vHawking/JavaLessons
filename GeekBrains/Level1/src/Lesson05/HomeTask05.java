@@ -1,6 +1,6 @@
 package Lesson05;
 
-import static Lesson05.HomeTask05.isAge;
+import static Lesson05.Staff.getEmpYears;
 
 /**
  * Java. Уровень1. Домашнее задание по 5 лекции.
@@ -20,22 +20,6 @@ import static Lesson05.HomeTask05.isAge;
  */
 
 public class HomeTask05 {
-
-    static String isAge(int employeeAge) {
-        int a1;
-        int a2;
-        a1 = employeeAge % 10;
-        a2 = employeeAge % 100;
-
-        if (a1 == 1 && a2 != 11) {
-            return "год";
-        } else if (a1 >= 2 && a1 <= 4 && (a2 < 10 || a2 >= 20)) {
-            return "года";
-        } else {
-            return "лет";
-        }
-    }
-
     public static void main(String[] args) {
         int setAge = 40;
 
@@ -51,7 +35,7 @@ public class HomeTask05 {
         person[4] = new Staff("Александров Александр", "Охранник",
                 "topgun@minbox.ru", "+7 (929) 127-46-06", 35000,35);
 
-        System.out.printf("Список сотрудников с возрастом больше %d %s.\n", setAge, isAge(setAge));
+        System.out.printf("Список сотрудников с возрастом больше %d %s.\n", setAge, getEmpYears(setAge));
         for (Staff persons : person) {
             if (persons.getAge() > setAge) {
                 System.out.println();
@@ -83,8 +67,19 @@ class Staff {
         return age;
     }
 
-    private String getYears() {
-        return isAge(age);
+    static String getEmpYears(int age) {
+        int a1;
+        int a2;
+        a1 = age % 10;
+        a2 = age % 100;
+
+        if (a1 == 1 && a2 != 11) {
+            return "год";
+        } else if (a1 >= 2 && a1 <= 4 && (a2 < 10 || a2 >= 20)) {
+            return "года";
+        } else {
+            return "лет";
+        }
     }
 
     @Override
@@ -94,6 +89,6 @@ class Staff {
                 "\n| E-mail: " + email +
                 "\n| Телефон: " + phone +
                 "\n| Оклад: " + salary + " руб." +
-                "\n| Возраст: " + age + " " + getYears() + ".";
+                "\n| Возраст: " + age + " " + getEmpYears(age) + ".";
     }
 }
