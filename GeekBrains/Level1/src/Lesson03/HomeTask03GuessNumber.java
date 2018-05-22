@@ -83,12 +83,12 @@ public class HomeTask03GuessNumber {
     private static boolean exitGame() {
         int exit;
 
-        System.out.print("Хотите поиграть снова?\n1 – Да / 0 - Выход из программы: ");
+        System.out.print("Хотите поиграть снова?\n1 – Да / 0 – Выход из программы: ");
         while (true) {
             try {
                 exit = scanner.nextInt();
                 if (exit < 0 || exit > 1) {
-                    System.out.print("Введите 1 или 0: ");
+                    System.out.print("Введите 1 – Играть снова / или 0 – Выход: ");
                 } else {
                     System.out.println();
                     return exit != 0;
@@ -112,7 +112,7 @@ public class HomeTask03GuessNumber {
                     "\nКоличество попыток: %d.\n\n", tryNumbers);
             guessNumber(cpuNum);
         } while (exitGame());
-        System.out.println("Завершение работы программы.\nИгра окончена.");
+        System.out.println("Игра окончена.\nЗавершение работы программы.");
         System.out.println("© 2018 Вадим Ястребов, mailcome@yandex.ru.");
         scanner.close();
     }
