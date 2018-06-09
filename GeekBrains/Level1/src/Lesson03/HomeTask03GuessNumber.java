@@ -88,7 +88,7 @@ public class HomeTask03GuessNumber {
             try {
                 exit = scanner.nextInt();
                 if (exit < 0 || exit > 1) {
-                    System.out.print("Введите 1 – Играть снова / или 0 – Выход: ");
+                    System.out.print("Введите 1, или 0: ");
                 } else {
                     System.out.println();
                     return exit != 0;
