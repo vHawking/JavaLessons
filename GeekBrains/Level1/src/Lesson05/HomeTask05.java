@@ -63,7 +63,7 @@ class Staff {
         this.age = age;
     }
 
-    public int getAge() {
+    int getAge() {
         return age;
     }
 
