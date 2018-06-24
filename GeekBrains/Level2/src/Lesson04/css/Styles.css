@@ -1,0 +1,6 @@
+#btn1 {
+    -fx-font: 14px "Serif";
+    -fx-padding: 2;
+    -fx-background-color: chocolate;
+    -fx-text-fill: white;
+}
